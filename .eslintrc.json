@@ -1,0 +1,57 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2018, // Allows for the parsing of modern ECMAScript features
+    "sourceType": "module", // Allows for the use of imports
+    "ecmaFeatures": {
+      "jsx": true // Allows for the parsing of JSX
+    }
+  },
+  "extends": [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "prettier",
+    "next"
+  ],
+  "rules": {
+    // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "class-methods-use-this": 0,
+    "no-undef": 0,
+    "import/extensions": 0,
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*.test.ts",
+          "**/*.test.tsx",
+          "**/test-utils.{ts,tsx}"
+        ]
+      }
+    ],
+    "import/no-unresolved": 0,
+    "import/order": [
+      "error",
+      {
+        "newlines-between": "always"
+      }
+    ],
+    "import/prefer-default-export": 0,
+    "react/jsx-curly-newline": 0,
+    "react/jsx-filename-extension": 0,
+    "react/jsx-one-expression-per-line": 0,
+    "react/jsx-props-no-spreading": 0,
+    "react/jsx-wrap-multilines": [
+      "error",
+      {
+        "declaration": false,
+        "assignment": false
+      }
+    ],
+    "jsx-a11y/anchor-is-valid": "off",
+    "react-hooks/exhaustive-deps": "warn",
+    "jsx-a11y/alt-text": "off", // image alt text
+    "react-hooks/rules-of-hooks": "error",
+    "react/react-in-jsx-scope": "off"
+  }
+}
