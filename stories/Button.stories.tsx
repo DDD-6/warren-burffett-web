@@ -1,6 +1,8 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
+import { figmaUrl } from '../constants';
+
 import { Button } from './Button';
 
 export default {
@@ -8,6 +10,12 @@ export default {
   component: Button,
   argTypes: {
     backgroundColor: { control: 'color' },
+  },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: figmaUrl,
+    },
   },
 } as ComponentMeta<typeof Button>;
 
