@@ -114,3 +114,20 @@ export const checkField = css`
     display: block;
   }
 `;
+
+export const font24 = css`
+  font-weight: 700;
+  font-size: 2.4rem;
+  line-height: 2.1;
+  letter-spacing: -0.05em;
+`;
+
+export const fontGray = css`
+  margin-bottom: 5.3rem;
+  font-weight: 700;
+  font-size: 1.8rem;
+  line-height: 1.8;
+  letter-spacing: -0.05em;
+  text-align: center;
+  color: #777777;
+`;
