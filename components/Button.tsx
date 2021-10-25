@@ -19,6 +19,7 @@ interface ButtonProps {
    * Button contents
    */
   label: string;
+  type?: 'button' | 'submit';
   /**
    * Optional click handler
    */
@@ -28,10 +29,17 @@ interface ButtonProps {
 /**
  * Primary UI component for user interaction
  */
-const Button = ({ rounded = true, color = '#fff', backgroundColor = '#278EEB', label, ...props }: ButtonProps) => {
+const Button = ({
+  rounded = true,
+  color = '#fff',
+  backgroundColor = '#278EEB',
+  label,
+  type,
+  ...props
+}: ButtonProps) => {
   const round = rounded ? buttonRound : null;
   return (
-    <button type="button" css={[buttonDefault, round]} style={{ color, backgroundColor }} {...props}>
+    <button type={type || 'button'} css={[buttonDefault, round]} style={{ color, backgroundColor }} {...props}>
       {label}
     </button>
   );
