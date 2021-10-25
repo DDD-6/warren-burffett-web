@@ -25,3 +25,8 @@ input:active {
   box-shadow: none;
   outline: none;
 }
+
+input {
+  padding: 0;
+  margin: 0;
+}
