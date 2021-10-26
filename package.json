@@ -32,6 +32,7 @@
     "@types/jest": "^27.0.1",
     "@types/react": "17.0.19",
     "babel-loader": "^8.2.2",
+    "babel-plugin-module-resolver": "4.1.0",
     "cross-env": "^7.0.3",
     "cypress": "^8.3.1",
     "eslint": "7.32.0",
