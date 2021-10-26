@@ -1,3 +1,12 @@
+:root {
+  --black: #000;
+  --white: #fff;
+  --font-gray: #777777;
+  --button-login: #278eeb;
+  --border-input: #eae9ea;
+  --background-checkbox: #e5e5e5;
+}
+
 * {
   box-sizing: border-box;
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI',

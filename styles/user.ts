@@ -47,7 +47,7 @@ export const inputDefault = css`
   height: 6.1rem;
   font-size: 2.4rem;
   text-align: center;
-  border: 2px solid #eae9ea;
+  border: 2px solid var(--border-input);
   border-radius: 12px;
 `;
 
@@ -73,7 +73,7 @@ export const checkField = css`
   padding-left: 2.4rem;
   margin-bottom: 0.5rem;
   font-size: 1.4rem;
-  color: #000;
+  color: var(--black);
 
   /* Hide default checkbox */
   input {
@@ -90,7 +90,7 @@ export const checkField = css`
     position: absolute;
     top: -1px;
     left: 0;
-    background-color: #e5e5e5;
+    background-color: var(--background-checkbox);
   }
 
   // input 안에 들어갈 check
@@ -102,7 +102,7 @@ export const checkField = css`
     left: 3px;
     bottom: 2px;
     content: '';
-    border: solid #278eeb;
+    border: solid var(--button-login);
     border-width: 0 4px 4px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
@@ -129,5 +129,5 @@ export const fontGray = css`
   line-height: 1.8;
   letter-spacing: -0.05em;
   text-align: center;
-  color: #777777;
+  color: var(--font-gray);
 `;
