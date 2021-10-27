@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { figmaUrl } from '../constants';
+import { figmaUrl } from '../common/constants';
 
 import { Button } from './Button';
 
