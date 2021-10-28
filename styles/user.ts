@@ -9,32 +9,30 @@ export const centerLayout = css`
 export const formLayout = css`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 58.8rem;
-  height: 66.2rem;
-  padding: 0.8rem 10.2rem 4.8rem;
-  // 나중에 지우기
-  margin-top: 50px;
-  button {
+  align-items: flex-start;
+  width: 37.6rem;
+  /* button {
     margin-bottom: 1rem;
 
     &:hover {
       cursor: pointer;
     }
-  }
+  } */
 `;
 
 export const fieldLayout = css`
-  margin-bottom: 1.4rem;
+  width: 100%;
+  margin-bottom: 3.6rem;
 
-  input {
-    margin-bottom: 0.5rem;
+  input::placeholder {
+    color: #cfcfcf;
   }
 
   & > div {
-    padding-left: 0.7rem;
-    font-size: 1.2rem;
-    color: red;
+    margin-top: 0.4rem;
+    font-size: 1.4rem;
+    line-height: 137%;
+    color: #fd4e4e;
   }
 
   &:last-of-type {
@@ -42,17 +40,27 @@ export const fieldLayout = css`
   }
 `;
 
-export const inputDefault = css`
-  width: 38.4rem;
-  height: 6.1rem;
-  font-size: 2.4rem;
-  text-align: center;
-  border: 2px solid var(--border-input);
-  border-radius: 12px;
+export const underlineInput = css`
+  width: 100%;
+  height: 3.9rem;
+  padding-bottom: 1.2rem;
+  font-size: 2rem;
+  line-height: 137%;
+  border: none;
+  border-bottom: 1.5px solid #000;
+  color: #202020;
+`;
+
+export const grayUnderlineInput = css`
+  border-bottom-color: #b9b9b9;
+`;
+
+export const limeUnderlineInput = css`
+  border-bottom-color: #dbeb27;
 `;
 
 export const inputError = css`
-  border-color: red;
+  border-bottom-color: #fd4e4e;
 `;
 
 export const checkboxLayout = css`
