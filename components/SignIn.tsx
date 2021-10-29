@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import { css } from '@emotion/react';
 import { Form, Formik, FormikHelpers, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import Link from 'next/link';
 
 import Button from './Button';
 import BoldTitle from './BoldTitle';
+import { SmallAnchor } from './SmallText';
 
 import {
   centerLayout,
@@ -16,6 +15,7 @@ import {
   limeUnderlineInput,
   grayUnderlineInput,
 } from '@styles/user';
+import { rowJustifySpaceBetween } from '@styles/index';
 
 Yup.setLocale({
   string: {
@@ -101,14 +101,10 @@ const SignIn = () => {
                 </div>
               )}
             </div>
-            <Button label="로그인" type="submit" />
-            <div css={spanBox}>
-              <Link href="/">
-                <a>비밀번호를 잊으셨나요?</a>
-              </Link>
-              <Link href="/">
-                <a>회원가입</a>
-              </Link>
+            <Button label="로그인" type="submit" marginBottom="1.4rem" />
+            <div css={rowJustifySpaceBetween} style={{ marginBottom: '5.8rem' }}>
+              <SmallAnchor href="/" text="비밀번호를 잊으셨나요?" />
+              <SmallAnchor href="/signup" text="회원가입" />
             </div>
             {/* <Button label="카카오" color="#0B0B0B" backgroundColor="#FFE812" />
             <Button label="네이버" backgroundColor="#00C73C" />
@@ -119,20 +115,5 @@ const SignIn = () => {
     </div>
   );
 };
-
-const spanBox = css`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-bottom: 3.3rem;
-
-  a {
-    font-size: 1.4rem;
-    font-weight: 700;
-    line-height: 2.3;
-    letter-spacing: -0.05em;
-    color: #000;
-  }
-`;
 
 export default SignIn;

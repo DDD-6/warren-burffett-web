@@ -3,6 +3,7 @@ import * as Yup from 'yup';
 
 import Button from './Button';
 import BoldTitle from './BoldTitle';
+import { SmallAnchor, SmallSpan } from './SmallText';
 
 import { signupAPI } from '@api/user';
 import {
@@ -17,7 +18,7 @@ import {
   passwordNotice,
   underlineInput,
 } from '@styles/user';
-import SmallSpan from './SmallSpan';
+import { rowJustifyFlexEnd } from '@styles/index';
 
 Yup.setLocale({
   string: {
@@ -138,7 +139,10 @@ const SignUp = () => {
               </label>
               <ErrorMessage name="agree" component="div" />
             </div> */}
-            <Button label="회원가입" type="submit" />
+            <Button label="회원가입" type="submit" marginBottom="1.4rem" />
+            <div css={rowJustifyFlexEnd} style={{ marginBottom: '5.8rem' }}>
+              <SmallAnchor href="/signin" text="로그인" />
+            </div>
             {/* <Button label="카카오" color="#0B0B0B" backgroundColor="#FFE812" />
             <Button label="네이버" backgroundColor="#00C73C" />
             <Button label="구글" color="#000" backgroundColor="#f8f8f8" /> */}
