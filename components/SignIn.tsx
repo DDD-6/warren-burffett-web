@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Form, Formik, FormikHelpers, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-import Button from './Button';
+import { Button, CircleButton } from './Button';
 import BoldTitle from './BoldTitle';
 import { SmallAnchor } from './SmallText';
 
@@ -15,7 +15,7 @@ import {
   limeUnderlineInput,
   grayUnderlineInput,
 } from '@styles/user';
-import { rowJustifySpaceBetween } from '@styles/index';
+import { rowJustifySpaceAround, rowJustifySpaceBetween } from '@styles/index';
 
 Yup.setLocale({
   string: {
@@ -109,6 +109,11 @@ const SignIn = () => {
             {/* <Button label="카카오" color="#0B0B0B" backgroundColor="#FFE812" />
             <Button label="네이버" backgroundColor="#00C73C" />
             <Button label="구글" color="#000" backgroundColor="#f8f8f8" /> */}
+            <div css={rowJustifySpaceAround}>
+              <CircleButton sns="google" />
+              <CircleButton sns="google" />
+              <CircleButton sns="google" />
+            </div>
           </Form>
         )}
       </Formik>

@@ -4,44 +4,63 @@ type grey = '#f8f8f8';
 type blue = '#278EEB';
 type yellow = '#FFE812';
 type green = '#00C73C';
-type buttonBackgroundColor = grey | blue | yellow | green;
 
+type buttonBackgroundColor = grey | blue | yellow | green | '#202020';
 type textColor = '#fff' | '#000' | '#0B0B0B';
 
+type socialLogin = 'naver' | 'google' | 'kakao';
+
 interface ButtonProps {
-  rounded?: boolean;
   color?: textColor;
-  /**
-   * What background color to use
-   */
   backgroundColor?: buttonBackgroundColor;
-  /**
-   * Button contents
-   */
-  label: string;
+  marginBottom?: string;
+  borderRadius?: string;
+  label?: string;
   type?: 'button' | 'submit';
-  /**
-   * Optional click handler
-   */
+
+  /** sns login */
+  sns?: socialLogin;
+
   onClick?: () => void;
 }
 
 /**
  * Primary UI component for user interaction
  */
-const Button = ({
-  rounded = true,
+export const Button = ({
   color = '#fff',
-  backgroundColor = '#278EEB',
+  backgroundColor = '#202020',
+  marginBottom = '0',
+  borderRadius = '10rem',
   label,
   type,
   ...props
 }: ButtonProps) => {
-  const round = rounded ? buttonRound : null;
   return (
-    <button type={type || 'button'} css={[buttonDefault, round]} style={{ color, backgroundColor }} {...props}>
+    <button
+      type={type || 'button'}
+      css={buttonDefault}
+      style={{ color, backgroundColor, marginBottom, borderRadius }}
+      {...props}
+    >
       {label}
     </button>
+  );
+};
+
+export const CircleButton = ({ borderRadius = '100%', sns = 'naver' }: ButtonProps) => {
+  const backgroundImage = 'url(../public/google.png)';
+  return (
+    <button
+      css={circleButtonDefault}
+      style={{
+        background: `${backgroundImage} no-repeat center center / cover`,
+        borderRadius,
+      }}
+      onClick={() => {
+        console.log(sns);
+      }}
+    ></button>
   );
 };
 
@@ -59,8 +78,8 @@ export const buttonDefault = css`
   }
 `;
 
-export const buttonRound = css`
-  border-radius: 10rem;
+export const circleButtonDefault = css`
+  width: 6.4rem;
+  height: 6.4rem;
+  padding: 0;
 `;
-
-export default Button;

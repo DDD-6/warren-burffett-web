@@ -11,3 +11,9 @@ export const rowJustifySpaceBetween = css`
   justify-content: space-between;
   width: 100%;
 `;
+
+export const rowJustifySpaceAround = css`
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+`;
