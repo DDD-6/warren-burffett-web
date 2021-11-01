@@ -1,45 +1,35 @@
-import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { figmaUrl } from '../common/constants';
-
-import { Button } from './Button';
+import { Button } from '@components/Button';
 
 export default {
   title: 'Example/Button',
   component: Button,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-  parameters: {
-    design: {
-      type: 'figma',
-      url: figmaUrl,
-    },
-  },
 } as ComponentMeta<typeof Button>;
 
 const Template: ComponentStory<typeof Button> = args => <Button {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {
-  primary: true,
-  label: 'Button',
+export const SignUp = Template.bind({});
+SignUp.args = {
+  label: '회원가입',
 };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  label: 'Button',
+export const Kakao = Template.bind({});
+Kakao.args = {
+  label: '카카오',
+  color: '#0B0B0B',
+  backgroundColor: '#FFE812',
 };
 
-export const Large = Template.bind({});
-Large.args = {
-  size: 'large',
-  label: 'Button',
+export const Naver = Template.bind({});
+Naver.args = {
+  label: '네이버',
+  backgroundColor: '#00C73C',
 };
 
-export const Small = Template.bind({});
-Small.args = {
-  size: 'small',
-  label: 'Button',
+export const Google = Template.bind({});
+Google.args = {
+  label: '구글',
+  color: '#000',
+  backgroundColor: '#f8f8f8',
 };
