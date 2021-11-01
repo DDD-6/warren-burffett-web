@@ -68,10 +68,8 @@ export const buttonDefault = css`
   width: 19.9rem;
   height: 6.2rem;
   padding: 0;
-  font-weight: 700;
-  font-size: 2.4rem;
-  line-height: 2.1;
-  letter-spacing: -0.05em;
+  font-size: 2rem;
+  line-height: 137%;
   border: none;
   @media (min-width: 768px) {
     width: 38.238rem;

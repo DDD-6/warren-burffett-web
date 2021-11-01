@@ -1,13 +1,27 @@
 import { Form, Formik, FormikHelpers, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-import Button from './Button';
+import { Button } from './Button';
+import BoldTitle from './BoldTitle';
+import { SmallAnchor } from './SmallText';
 
-import { centerLayout, fieldLayout, font24, fontGray, formLayout, inputDefault, inputError } from '@styles/user';
+import {
+  centerLayout,
+  fieldLayout,
+  font24,
+  fontGray,
+  formLayout,
+  grayUnderlineInput,
+  inputDefault,
+  inputError,
+  limeUnderlineInput,
+  underlineInput,
+} from '@styles/user';
+import { rowJustifyFlexEnd } from '@styles/index';
 
 Yup.setLocale({
   string: {
-    email: '이메일 형식을 확인해주세요',
+    email: '정확한 이메일 양식을 입력해 주세요',
   },
 });
 
@@ -34,22 +48,27 @@ const PasswordReset = () => {
           }, 500);
         }}
       >
-        {({ errors, touched }) => (
+        {({ values, errors, touched }) => (
           <Form css={formLayout}>
-            <div css={font24}>새로운 비밀번호를 설정해 주세요</div>
-            <div css={fontGray}>
-              계정에 연결된 이메일 주소를 입력하면 암호를 재설정할 수 있는 링크를 이메일로 보내드릴게요
-            </div>
+            <BoldTitle title="FORGOT PASSWORD" />
             <div css={fieldLayout}>
               <Field
                 name="email"
                 type="email"
-                placeholder="이메일"
-                css={[inputDefault, errors.email && touched.email && inputError]}
+                placeholder="가입했던 이메일 주소 입력"
+                css={[
+                  underlineInput,
+                  values.email !== '' && !touched.email && limeUnderlineInput,
+                  values.email !== '' && touched.email && grayUnderlineInput,
+                  errors.email && touched.email && inputError,
+                ]}
               />
               <ErrorMessage name="email" component="div" />
             </div>
-            <Button label="인증메일 전송하기" type="submit" />
+            <Button label="전송하기" type="submit" marginBottom="1.4rem" />
+            <div css={rowJustifyFlexEnd}>
+              <SmallAnchor href="/signin" text="로그인" />
+            </div>
           </Form>
         )}
       </Formik>
