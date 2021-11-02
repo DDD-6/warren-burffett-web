@@ -9,6 +9,12 @@ export function useLayout() {
   }, []);
 
   useEffect(() => {
+    if (window) {
+      setWidth(window.innerWidth);
+    }
+  }, []);
+
+  useEffect(() => {
     const debounceResize = () => debounce(() => onResizeWidth(window.innerWidth), 500);
 
     window.addEventListener('resize', debounceResize());

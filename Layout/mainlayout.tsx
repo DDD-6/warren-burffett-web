@@ -2,9 +2,8 @@ import { ReactNode } from 'react';
 import Image from 'next/image';
 import router from 'next/router';
 
-import { Header } from '../components/Header';
-
-import { IconButton } from '@components/button';
+import { Header } from 'components/Header';
+import { IconButton } from 'components/button';
 import { useLayout } from 'hooks/layout';
 
 interface MainLayoutProps {
@@ -38,7 +37,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
           </IconButton>
         </div>
       </Header>
-      {children}
+      <main style={{ height: width > 768 ? 'calc(100vh - 72px)' : 'calc(100vh - 56px)' }}>{children}</main>
     </>
   );
 }
