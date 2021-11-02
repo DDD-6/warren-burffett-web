@@ -1,7 +1,9 @@
 import type { NextPage } from 'next';
 import styled from '@emotion/styled';
+import router from 'next/router';
 
 import { Section } from 'components/Section';
+import { Button } from 'components/button';
 
 const HomePageStyle = styled.div`
   display: flex;
@@ -9,7 +11,6 @@ const HomePageStyle = styled.div`
   padding-top: 18.5rem;
   padding-bottom: 16rem;
   margin: 0 auto;
-  /* height: calc(100vh - 72px); */
 `;
 
 const Home: NextPage = () => {
@@ -23,7 +24,11 @@ const Home: NextPage = () => {
         </picture>
       </Section>
       <Section style={{ paddingTop: '16.8rem' }}>
-        <button>{"Let's wesave"}</button>
+        <Button
+          onClick={() => router.push('/wesave')}
+          label="Let's WESAVE"
+          style={{ width: '25rem', height: '7rem', color: '#000', backgroundColor: '#dbeb27' }}
+        />
       </Section>
     </HomePageStyle>
   );
