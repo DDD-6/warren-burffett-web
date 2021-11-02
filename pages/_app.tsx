@@ -7,6 +7,8 @@ import { css, Global } from '@emotion/react';
 import { backgroundColor } from '../styles/background-color';
 import { brandColor } from '../styles/brand-color';
 
+import MainLayout from 'Layout/mainlayout';
+
 const queryCLient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -23,7 +25,9 @@ function MyApp({ Component, pageProps }: AppProps) {
             ${backgroundColor}
           `}
         />
-        <Component {...pageProps} />
+        <MainLayout>
+          <Component {...pageProps} />
+        </MainLayout>
       </QueryClientProvider>
     </CookiesProvider>
   );

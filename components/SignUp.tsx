@@ -1,7 +1,7 @@
 import { Form, Formik, FormikHelpers, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-import { Button, CircleButton } from './Button';
+import { Button, CircleButton } from './button/Button';
 import BoldTitle from './BoldTitle';
 import { SmallAnchor, SmallSpan } from './SmallText';
 
