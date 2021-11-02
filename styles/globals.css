@@ -12,7 +12,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI',
-    'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;;
+    'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
   overflow-wrap: break-word;
   font-size: 10px;
 }
@@ -24,6 +24,7 @@ body:lang(ko) {
 img {
   max-width: 100%;
   height: auto;
+  aspect-ratio: attr(width) / attr(height);
 }
 
 a {
