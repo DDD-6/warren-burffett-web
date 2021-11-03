@@ -1,7 +1,7 @@
-import styled from '@emotion/styled';
-import { ReactNode, HTMLProps } from 'react';
+import { css } from '@emotion/react';
+import { ReactNode, ButtonHTMLAttributes } from 'react';
 
-const SvgButton = styled.button`
+const iconButtonCss = css`
   background-color: #fff;
   border: 0px;
   padding: 0 23px;
@@ -11,6 +11,10 @@ interface IconButtonProps {
   children: ReactNode;
 }
 
-export default function IconButton({ children }: IconButtonProps & HTMLProps<HTMLButtonElement>) {
-  return <SvgButton>{children}</SvgButton>;
+export default function IconButton(props: IconButtonProps & ButtonHTMLAttributes<HTMLButtonElement>) {
+  return (
+    <button css={iconButtonCss} {...props}>
+      {props.children}
+    </button>
+  );
 }

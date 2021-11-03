@@ -3,7 +3,7 @@ import { Reducer, useReducer, useCallback } from 'react';
 import { Income } from '../../entities';
 import { checkHour, checkMonth, checkWeek } from '../../common/utils/validate';
 
-type Salary = Income & {
+export type SalaryType = Income & {
   startTime: number;
   quitTime: number;
   workday: number;
@@ -13,30 +13,30 @@ type Salary = Income & {
 type Action =
   | {
       type: 'SET_STARTTIME';
-      payload: Salary['startTime'];
+      payload: SalaryType['startTime'];
     }
   | {
       type: 'SET_QUITTIME';
-      payload: Salary['quitTime'];
+      payload: SalaryType['quitTime'];
     }
   | {
       type: 'SET_WORKDAY';
-      payload: Salary['workday'];
+      payload: SalaryType['workday'];
     }
   | {
       type: 'SET_PAYDAY';
-      payload: Salary['payday'];
+      payload: SalaryType['payday'];
     }
   | {
       type: 'SET_INCOME';
-      payload: Salary['income'];
+      payload: SalaryType['income'];
     }
   | {
       type: 'SET_ADDITIONAL';
-      payload?: Salary['additional'];
+      payload?: SalaryType['additional'];
     };
 
-const reducer = (state: Salary, action: Action): Salary => {
+const reducer = (state: SalaryType, action: Action): SalaryType => {
   switch (action.type) {
     case 'SET_ADDITIONAL': {
       return {
@@ -89,7 +89,7 @@ const initialState = {
 };
 
 export const useSalaryInput = () => {
-  const [state, dispatch] = useReducer<Reducer<Salary, Action>>(reducer, initialState);
+  const [state, dispatch] = useReducer<Reducer<SalaryType, Action>>(reducer, initialState);
 
   const onChangeAdditional = useCallback(
     (additional: string) => {
@@ -104,7 +104,8 @@ export const useSalaryInput = () => {
 
   const onChangeStartTime = useCallback(
     (startTime: string) => {
-      if (isNaN(+startTime) || checkHour(+startTime)) {
+      if (isNaN(+startTime) || !checkHour(+startTime)) {
+        dispatch({ type: 'SET_STARTTIME', payload: 0 });
         return;
       }
 
@@ -115,18 +116,20 @@ export const useSalaryInput = () => {
 
   const onChangeQuitTime = useCallback(
     (quitTime: string) => {
-      if (isNaN(+quitTime) || checkHour(+quitTime)) {
+      if (isNaN(+quitTime) || !checkHour(+quitTime) || +quitTime - state.startTime < 0) {
+        dispatch({ type: 'SET_QUITTIME', payload: 0 });
         return;
       }
 
       dispatch({ type: 'SET_QUITTIME', payload: +quitTime });
     },
-    [dispatch],
+    [dispatch, state.startTime],
   );
 
   const onChangePayday = useCallback(
     (payday: string) => {
-      if (isNaN(+payday) || checkMonth(+payday)) {
+      if (isNaN(+payday) || !checkMonth(+payday)) {
+        dispatch({ type: 'SET_PAYDAY', payload: 0 });
         return;
       }
 
@@ -137,7 +140,8 @@ export const useSalaryInput = () => {
 
   const onChangeWorkday = useCallback(
     (workday: string) => {
-      if (isNaN(+workday) || checkWeek(+workday)) {
+      if (isNaN(+workday) || !checkWeek(+workday)) {
+        dispatch({ type: 'SET_WORKDAY', payload: 0 });
         return;
       }
 
@@ -169,7 +173,7 @@ export const useSalaryInput = () => {
 };
 
 export const useSalaryStorage = () => {
-  const setSalary = (salary: Salary) => {
+  const setSalary = (salary: SalaryType) => {
     const salaryTemp = JSON.stringify(salary);
     localStorage.setItem('salary', salaryTemp);
   };

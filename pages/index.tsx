@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import styled from '@emotion/styled';
 import router from 'next/router';
+import Image from 'next/image';
 
 import { Section } from 'components/Section';
 import { Button } from 'components/button';
@@ -17,15 +18,11 @@ const Home: NextPage = () => {
   return (
     <HomePageStyle>
       <Section>
-        <picture>
-          <source srcSet="/main.avif" type="image/avif" />
-          <source srcSet="/main.webp" type="image/webp" />
-          <img src="/main.jpg" width="840" height="420" alt="welcome wesaver" loading="lazy" />;
-        </picture>
+        <Image src="/main.webp" width="840" height="420" alt="welcome wesaver" loading="lazy" />;
       </Section>
       <Section style={{ paddingTop: '16.8rem' }}>
         <Button
-          onClick={() => router.push('/wesave')}
+          onClick={() => router.push('/salary')}
           label="Let's WESAVE"
           style={{ width: '25rem', height: '7rem', color: '#000', backgroundColor: '#dbeb27' }}
         />
