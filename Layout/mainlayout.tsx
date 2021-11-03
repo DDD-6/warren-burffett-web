@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import Image from 'next/image';
 import router from 'next/router';
 
-import { Header } from 'components/Header';
-import { IconButton } from 'components/button';
+import { Header, IconButton, Menu } from 'components';
 import { useLayout } from 'hooks/layout';
 
 interface MainLayoutProps {
@@ -12,6 +11,11 @@ interface MainLayoutProps {
 
 export default function MainLayout({ children }: MainLayoutProps) {
   const { width } = useLayout();
+  const [toggle, setToggle] = useState(false);
+
+  const closeModal = () => {
+    setToggle(false);
+  };
 
   return (
     <>
@@ -26,7 +30,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
               loading="eager"
             />
           </IconButton>
-          <IconButton>
+          <IconButton onClick={() => setToggle(true)}>
             <Image
               src="/menu.svg"
               alt="menu"
@@ -38,6 +42,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
         </div>
       </Header>
       <main style={{ height: width > 768 ? 'calc(100vh - 72px)' : 'calc(100vh - 56px)' }}>{children}</main>
+      <Menu closeModal={closeModal} isOpen={toggle} layoutWidth={width} />
     </>
   );
 }

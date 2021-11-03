@@ -9,3 +9,5 @@ export * from './SignUp';
 export * from './SmallText';
 export * from './UnderlineInput';
 export * from './Section';
+
+export { default as Menu } from './Menu';

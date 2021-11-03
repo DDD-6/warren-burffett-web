@@ -17,6 +17,7 @@
     "@emotion/styled": "^11.3.0",
     "@storybook/react": "^6.3.7",
     "axios": "^0.21.4",
+    "classnames": "^2.3.1",
     "formik": "2.2.9",
     "lodash.debounce": "^4.0.8",
     "next": "11.1.2",
@@ -24,6 +25,7 @@
     "react": "17.0.2",
     "react-cookie": "^4.1.1",
     "react-dom": "17.0.2",
+    "react-modal": "^3.14.3",
     "react-query": "^3.29.0",
     "recoil": "^0.4.1",
     "yup": "0.32.11"
@@ -37,6 +39,7 @@
     "@types/jest": "^27.0.1",
     "@types/lodash.debounce": "^4.0.6",
     "@types/react": "17.0.19",
+    "@types/react-modal": "^3.13.1",
     "babel-loader": "^8.2.2",
     "babel-plugin-module-resolver": "4.1.0",
     "cross-env": "^7.0.3",

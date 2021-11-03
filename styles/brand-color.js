@@ -1,4 +1,8 @@
 export const brandColor = `
+.white-font {
+    color: #fff !important
+},
+
 .primary-blue {
     color: #3281f7 !important
 },

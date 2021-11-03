@@ -18,7 +18,7 @@ const Home: NextPage = () => {
   return (
     <HomePageStyle>
       <Section>
-        <Image src="/main.webp" width="840" height="420" alt="welcome wesaver" loading="lazy" />;
+        <Image src="/main.webp" width="840" height="420" alt="welcome wesaver" loading="eager" />;
       </Section>
       <Section style={{ paddingTop: '16.8rem' }}>
         <Button
