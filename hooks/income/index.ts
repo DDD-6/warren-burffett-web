@@ -1,7 +1,7 @@
 import { Reducer, useReducer, useCallback } from 'react';
 
 import { Income } from '../../entities';
-import { checkHour, checkMonth, checkWeek } from '../../common/utils/validate';
+import { checkHour, checkMonth, checkWeek } from '../../common/utils';
 
 export type SalaryType = Income & {
   startTime: number;
@@ -33,6 +33,13 @@ type Action =
     }
   | {
       type: 'SET_ADDITIONAL';
+      payload?: SalaryType['additional'];
+    }
+  | {
+      type: 'SET_DAY';
+    }
+  | {
+      type: 'SET_TIME';
       payload?: SalaryType['additional'];
     };
 
@@ -105,7 +112,7 @@ export const useSalaryInput = () => {
   const onChangeStartTime = useCallback(
     (startTime: string) => {
       if (isNaN(+startTime) || !checkHour(+startTime)) {
-        dispatch({ type: 'SET_STARTTIME', payload: 0 });
+        dispatch({ type: 'SET_STARTTIME', payload: 24 });
         return;
       }
 
@@ -117,7 +124,7 @@ export const useSalaryInput = () => {
   const onChangeQuitTime = useCallback(
     (quitTime: string) => {
       if (isNaN(+quitTime) || !checkHour(+quitTime) || +quitTime - state.startTime < 0) {
-        dispatch({ type: 'SET_QUITTIME', payload: 0 });
+        dispatch({ type: 'SET_QUITTIME', payload: 24 });
         return;
       }
 

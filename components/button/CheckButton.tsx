@@ -37,10 +37,13 @@ interface CheckButtonProps {
   isChecked: boolean;
 }
 
-export default function CheckButton(props: CheckButtonProps & ButtonHTMLAttributes<HTMLButtonElement>) {
+export default function CheckButton({
+  isChecked,
+  ...props
+}: CheckButtonProps & ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
     <IconButton {...props}>
-      <span css={checkCss({ backgroundColor: props.isChecked ? '#3281f7' : '#f3f3f3' })} />
+      <span css={checkCss({ backgroundColor: isChecked ? '#000' : '#f3f3f3' })} />
     </IconButton>
   );
 }

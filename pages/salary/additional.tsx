@@ -2,13 +2,15 @@
 import { useState } from 'react';
 
 import { P2, ClearInput, Section, Button, CheckButton } from 'components';
+import { stringToMoney } from 'common/utils';
 
 interface AdditionalProps {
   onChangeAdditional: (additional: string) => void;
   onSaveValue: () => void;
+  additional?: number;
 }
 
-export default function Additional({ onChangeAdditional, onSaveValue }: AdditionalProps) {
+export default function Additional({ onChangeAdditional, onSaveValue, additional }: AdditionalProps) {
   const [toggle, setToggle] = useState(false);
 
   return (
@@ -22,7 +24,15 @@ export default function Additional({ onChangeAdditional, onSaveValue }: Addition
       </div>
       <P2>
         네,(
-        <ClearInput onChange={e => onChangeAdditional(e.target.value)} size={5} minLength={9} placeholder="0,000,000" />
+        <ClearInput
+          onChange={e => onChangeAdditional(e.target.value)}
+          onBlur={e => {
+            e.currentTarget.value = additional ? stringToMoney(additional?.toString()) : '0';
+          }}
+          size={5}
+          minLength={9}
+          placeholder="0,000,000"
+        />
         )원 더 벌어요
       </P2>
       <Section style={{ flexBasis: '20rem', alignItems: 'center' }}>

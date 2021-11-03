@@ -28,7 +28,7 @@ export default function Salary() {
   const { setSalary } = useSalaryStorage();
 
   const onChangePage = () => {
-    // dispatch({ type: 'Next_Page' });
+    dispatch({ type: 'Next_Page' });
   };
 
   const onSaveValue = (salary: SalaryType) => {
@@ -40,6 +40,13 @@ export default function Salary() {
     <SalaryPageStyle>
       {stage === 1 ? (
         <Income
+          state={{
+            income: state.income,
+            payday: state.payday,
+            quitTime: state.quitTime,
+            startTime: state.startTime,
+            workday: state.workday,
+          }}
           onChangeIncome={onChangeIncome}
           onChangeQuitTime={onChangeQuitTime}
           onChangePayday={onChangePayday}
@@ -48,7 +55,11 @@ export default function Salary() {
           onChangeWorkday={onChangeWorkday}
         />
       ) : (
-        <Additional onChangeAdditional={onChangeAdditional} onSaveValue={() => onSaveValue(state)} />
+        <Additional
+          additional={state.additional}
+          onChangeAdditional={onChangeAdditional}
+          onSaveValue={() => onSaveValue(state)}
+        />
       )}
     </SalaryPageStyle>
   );
