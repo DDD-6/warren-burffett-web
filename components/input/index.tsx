@@ -10,6 +10,7 @@ const ClearInputCss = css`
   ::-ms-input-placeholder {
     color: #f3f3f3;
     text-align: center;
+    font-size: 9.6rem;
   }
 `;
 

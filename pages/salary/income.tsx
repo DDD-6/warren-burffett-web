@@ -52,7 +52,10 @@ export default function Income({
           placeholder="00"
         />
         ) 시 까지
-        <br /> 매주 (
+      </P2>
+      <P2>
+        {' '}
+        매주 (
         <ClearInput
           onChange={e => onChangeWorkday(e.target.value)}
           onBlur={e => {

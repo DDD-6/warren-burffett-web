@@ -3,7 +3,7 @@ import Image from 'next/image';
 import classnames from 'classnames';
 import styled from '@emotion/styled';
 import Modal from 'react-modal';
-import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 import { P1, Header, IconButton } from 'components';
 
@@ -39,15 +39,11 @@ const Nav = styled.nav`
 Modal.setAppElement('body');
 
 export default function Menu({ layoutWidth, isOpen, closeModal }: MenuProps) {
-  const [path, setPath] = useState<string | undefined>();
+  const { pathname } = useRouter();
+  const path = pathname.split('/')[1] || '/';
   const onCloseModal = () => {
     closeModal();
-    setPath('/');
   };
-
-  useEffect(() => {
-    setPath(window.location.pathname.split('/')[1] || '/');
-  }, []);
 
   return (
     <Modal isOpen={isOpen} onRequestClose={closeModal} shouldCloseOnEsc style={customStyles}>
