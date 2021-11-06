@@ -15,6 +15,7 @@ import {
   underlineInput,
 } from '@styles/user';
 import { rowJustifyFlexEnd, rowJustifySpaceAround } from '@styles/index';
+import { signupAPI } from '@api/user';
 
 Yup.setLocale({
   string: {
@@ -44,6 +45,8 @@ const SignUpSchema = Yup.object().shape({
 });
 
 const SignUp = () => {
+  // const router = useRouter();
+
   return (
     <div css={centerLayout}>
       <Formik
@@ -55,17 +58,20 @@ const SignUp = () => {
           agree: false,
         }}
         validationSchema={SignUpSchema}
-        onSubmit={async (values: SignUpValues, { setSubmitting }: FormikHelpers<SignUpValues>) => {
-          setTimeout(() => {
-            console.log(values);
+        onSubmit={(values: SignUpValues, { setSubmitting }: FormikHelpers<SignUpValues>) => {
+          setTimeout(async () => {
+            try {
+              const { data: user } = await signupAPI({ ...values });
+              if (user) {
+                // router.push('/');
+                // 모달 띄우거나 새로운 페이지 만들거나
+              }
+            } catch (err) {
+              alert(err);
+              console.log(err);
+            }
             setSubmitting(false);
           }, 500);
-          // try {
-          //   const { data: user } = await signupAPI({ ...values });
-          //   console.log(user);
-          // } catch (err) {
-          //   alert(err);
-          // }
         }}
       >
         {({ values, errors, touched }) => (

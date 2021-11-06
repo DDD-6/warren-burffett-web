@@ -9,8 +9,6 @@ const BoldTitle = ({ title }: BoldTitleProps) => {
 };
 
 const boldTitleDefault = css`
-  // margin-top은 지울 예정
-  margin-top: 16.7rem;
   margin-bottom: 5.8rem;
   font-size: 4.8rem;
   line-height: 1.5;
