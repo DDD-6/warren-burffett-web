@@ -1,9 +1,9 @@
 import type { NextPage } from 'next';
 
-import PasswordReset from '@components/PasswordReset';
+import SignIn from '@components/SignIn';
 
 const Home: NextPage = () => {
-  return <PasswordReset />;
+  return <SignIn />;
 };
 
 export default Home;

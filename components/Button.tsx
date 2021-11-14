@@ -1,22 +1,19 @@
 import { css } from '@emotion/react';
 
-type grey = '#f8f8f8';
-type blue = '#278EEB';
-type yellow = '#FFE812';
-type green = '#00C73C';
-
-type buttonBackgroundColor = grey | blue | yellow | green | '#202020';
 type textColor = '#fff' | '#000' | '#0B0B0B';
 
 type socialLogin = 'naver' | 'google' | 'kakao';
 
 interface ButtonProps {
   color?: textColor;
-  backgroundColor?: buttonBackgroundColor;
+  backgroundColor?: string;
   marginBottom?: string;
   borderRadius?: string;
   label?: string;
   type?: 'button' | 'submit';
+
+  /** can submit */
+  canSubmit?: boolean;
 
   /** sns login */
   sns?: socialLogin;
@@ -29,9 +26,9 @@ interface ButtonProps {
  */
 export const Button = ({
   color = '#fff',
-  backgroundColor = '#202020',
+  backgroundColor,
   marginBottom = '0',
-  borderRadius = '10rem',
+  borderRadius,
   label,
   type,
   ...props
@@ -65,15 +62,13 @@ export const CircleButton = ({ borderRadius = '100%', sns = 'naver' }: ButtonPro
 };
 
 export const buttonDefault = css`
-  width: 19.9rem;
-  height: 6.2rem;
+  width: 100%;
+  height: 7.4rem;
   padding: 0;
   font-size: 2rem;
-  line-height: 137%;
+  line-height: 1.2;
   border: none;
-  @media (min-width: 768px) {
-    width: 38.238rem;
-  }
+  border-radius: 40.5px;
 `;
 
 export const circleButtonDefault = css`

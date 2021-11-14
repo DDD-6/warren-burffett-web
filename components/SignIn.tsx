@@ -4,18 +4,10 @@ import * as Yup from 'yup';
 
 import { Button, CircleButton } from './Button';
 import BoldTitle from './BoldTitle';
-import { SmallAnchor } from './SmallText';
+import { SmallAnchor, SmallSpan } from './SmallText';
 
-import {
-  centerLayout,
-  fieldLayout,
-  formLayout,
-  underlineInput,
-  inputError,
-  limeUnderlineInput,
-  grayUnderlineInput,
-} from '@styles/user';
-import { rowJustifySpaceAround, rowJustifySpaceBetween } from '@styles/index';
+import { fieldLayout, formLayout, underlineInput, inputError, limeUnderlineInput, loginPanel } from '@styles/user';
+import { rowJustifyCenter, rowJustifySpaceAround } from '@styles/index';
 
 Yup.setLocale({
   string: {
@@ -41,7 +33,7 @@ const SignIn = () => {
   });
 
   return (
-    <div css={centerLayout}>
+    <div css={loginPanel}>
       <Formik
         initialValues={{
           email: '',
@@ -59,7 +51,7 @@ const SignIn = () => {
       >
         {({ values, errors, touched }) => (
           <Form css={formLayout}>
-            <BoldTitle title="LOGIN" />
+            <BoldTitle title="로그인" />
             <div css={fieldLayout}>
               <Field
                 name="email"
@@ -67,8 +59,8 @@ const SignIn = () => {
                 placeholder="이메일"
                 css={[
                   underlineInput,
+                  values.email !== '' && !errors.email && limeUnderlineInput,
                   values.email !== '' && !touched.email && limeUnderlineInput,
-                  values.email !== '' && touched.email && grayUnderlineInput,
                   errors.email && touched.email && inputError,
                   !isAuthenticated &&
                     finalInfo.email === values.email &&
@@ -85,8 +77,8 @@ const SignIn = () => {
                 placeholder="비밀번호"
                 css={[
                   underlineInput,
+                  values.password !== '' && !errors.password && limeUnderlineInput,
                   values.password !== '' && !touched.password && limeUnderlineInput,
-                  values.password !== '' && touched.password && grayUnderlineInput,
                   errors.password && touched.password && inputError,
                   !isAuthenticated &&
                     finalInfo.email === values.email &&
@@ -101,14 +93,21 @@ const SignIn = () => {
                 </div>
               )}
             </div>
-            <Button label="로그인" type="submit" marginBottom="1.4rem" />
-            <div css={rowJustifySpaceBetween} style={{ marginBottom: '5.8rem' }}>
-              <SmallAnchor href="/" text="비밀번호를 잊으셨나요?" />
+            <Button
+              label="로그인"
+              type="submit"
+              marginBottom="2.4rem"
+              backgroundColor={
+                values.email !== '' && !errors.email && values.password !== '' && !errors.password
+                  ? '#3281f7'
+                  : '#e4e4e4'
+              }
+            />
+            <div css={rowJustifyCenter} style={{ marginBottom: '4.8rem' }}>
+              <SmallAnchor href="/" text="비밀번호 찾기" marginRight="1.6rem" />
+              <SmallSpan text="|" marginRight="1.6rem" />
               <SmallAnchor href="/signup" text="회원가입" />
             </div>
-            {/* <Button label="카카오" color="#0B0B0B" backgroundColor="#FFE812" />
-            <Button label="네이버" backgroundColor="#00C73C" />
-            <Button label="구글" color="#000" backgroundColor="#f8f8f8" /> */}
             <div css={rowJustifySpaceAround}>
               <CircleButton sns="google" />
               <CircleButton sns="google" />
