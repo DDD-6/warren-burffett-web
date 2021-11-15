@@ -46,7 +46,10 @@ export const Button = ({
 };
 
 export const CircleButton = ({ borderRadius = '100%', sns = 'naver' }: ButtonProps) => {
-  const backgroundImage = 'url(../public/google.png)';
+  let backgroundImage = 'url(/google.png)';
+  if (sns === 'naver') backgroundImage = 'url(/naver.png)';
+  else if (sns === 'kakao') backgroundImage = 'url(/kakao.png)';
+
   return (
     <button
       css={circleButtonDefault}
@@ -75,4 +78,5 @@ export const circleButtonDefault = css`
   width: 6.4rem;
   height: 6.4rem;
   padding: 0;
+  border-width: 0;
 `;

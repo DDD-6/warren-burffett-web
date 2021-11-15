@@ -109,8 +109,8 @@ const SignIn = () => {
               <SmallAnchor href="/signup" text="회원가입" />
             </div>
             <div css={rowJustifySpaceAround}>
-              <CircleButton sns="google" />
-              <CircleButton sns="google" />
+              <CircleButton sns="naver" />
+              <CircleButton sns="kakao" />
               <CircleButton sns="google" />
             </div>
           </Form>
