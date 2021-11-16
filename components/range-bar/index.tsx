@@ -2,12 +2,14 @@ import { ReactNode, CSSProperties } from 'react';
 import classnames from 'classnames';
 
 interface RangeBarProps {
-  content: ReactNode;
+  contents: ReactNode;
   type: 'today' | 'month' | 'off-work';
   style?: CSSProperties;
+  onMouseOver?: () => void;
+  onMouseOut?: () => void;
 }
 
-export default function RangeBar({ content, type, style }: RangeBarProps) {
+export default function RangeBar({ contents, type, style, onMouseOut, onMouseOver }: RangeBarProps) {
   return (
     <div
       style={{ display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: 'center', ...style }}
@@ -16,8 +18,10 @@ export default function RangeBar({ content, type, style }: RangeBarProps) {
         { 'bg-secondary-green': type === 'today' },
         { 'bg-primary-purple': type === 'off-work' },
       )}
+      onMouseOut={onMouseOut}
+      onMouseOver={onMouseOver}
     >
-      <div style={{ textAlign: 'center', transform: 'translate(0%, -85%)' }}>{content}</div>
+      <div style={{ textAlign: 'center', transform: 'translate(0%, -85%)' }}>{contents}</div>
     </div>
   );
 }

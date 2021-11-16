@@ -259,7 +259,7 @@ const calcCurrentSalary = () => {
     return { currentSalary: 0, percentage: 0 };
   }
   const percentage = convertPassedDayToPercentage();
-  const result = (salary.income + (salary?.additional || 0)) * percentage;
+  const result = (salary.income + (salary?.additional || 0)) * (percentage / 100);
 
   return { currentSalary: result, percentage };
 };
@@ -271,21 +271,26 @@ const calcCurrentWages = () => {
     return { currentWage: 0, percentage: 0 };
   }
 
-  const percentage = convertPassedTimeToPercentage();
+  const current = new Date();
 
-  const result = salary.income * percentage;
+  if (!salary.workday.includes(current.getDay())) {
+    return { currentWage: 0, percentage: 0 };
+  }
+
+  const percentage = convertPassedTimeToPercentage();
+  const result = salary.income * (percentage / 100);
 
   return { currentWage: result, percentage };
 };
 
 export const useMonthWages = () => {
   return useQuery('month-wage', () => calcCurrentSalary(), {
-    refetchInterval: 3600,
+    refetchInterval: 60000,
   });
 };
 
 export const useDayWages = () => {
   return useQuery('day-wage', () => calcCurrentWages(), {
-    refetchInterval: 3600,
+    refetchInterval: 60000,
   });
 };

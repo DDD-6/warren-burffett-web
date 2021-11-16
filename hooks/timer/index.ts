@@ -11,6 +11,11 @@ const calcOffWorkTime = () => {
     return { passedTimeToPercentage: 0, remainingTime: { hours: 0, minutes: 0, seconds: 0 } };
   }
 
+  const current = new Date();
+  if (!salary.workday.includes(current.getDay())) {
+    return { passedTimeToPercentage: 0, remainingTime: { hours: 0, minutes: 0, seconds: 0 } };
+  }
+
   const isWorking = isWorkingTime(salary.startTime, salary.quitTime);
 
   if (!isWorking) {
