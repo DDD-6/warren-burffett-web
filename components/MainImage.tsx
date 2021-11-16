@@ -1,6 +1,6 @@
 import { mainImage } from '@styles/index';
 
-const MainImage = () => {
+const MainImage = ({ imageUrl }) => {
   return <div css={mainImage}>image</div>;
 };
 

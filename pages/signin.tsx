@@ -7,7 +7,7 @@ const SignInPage: NextPage = () => {
   return (
     <div style={{ display: 'flex', width: '100%' }}>
       <SignIn />
-      <MainImage />
+      <MainImage imageUrl />
     </div>
   );
 };

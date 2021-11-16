@@ -6,12 +6,12 @@ import BoldTitle from './BoldTitle';
 import { SmallAnchor, SmallSpan } from './SmallText';
 
 import {
-  centerLayout,
   fieldLayout,
   formLayout,
   grayUnderlineInput,
   inputError,
   limeUnderlineInput,
+  loginPanel,
   underlineInput,
 } from '@styles/user';
 import { rowJustifyFlexEnd, rowJustifySpaceAround } from '@styles/index';
@@ -48,7 +48,7 @@ const SignUp = () => {
   // const router = useRouter();
 
   return (
-    <div css={centerLayout}>
+    <div css={loginPanel}>
       <Formik
         initialValues={{
           name: '',
@@ -76,7 +76,7 @@ const SignUp = () => {
       >
         {({ values, errors, touched }) => (
           <Form css={formLayout}>
-            <BoldTitle title="SIGN UP" />
+            <BoldTitle title="회원가입" />
             <div css={fieldLayout}>
               <Field
                 name="name"
@@ -133,14 +133,6 @@ const SignUp = () => {
               />
               <ErrorMessage name="passwordCheck" component="div" />
             </div>
-            {/* <div css={checkboxLayout}>
-              <label css={checkField}>
-                <Field type="checkbox" name="agree" />
-                동의합니다
-                <span></span>
-              </label>
-              <ErrorMessage name="agree" component="div" />
-            </div> */}
             <Button label="회원가입" type="submit" marginBottom="1.4rem" />
             <div css={rowJustifyFlexEnd} style={{ marginBottom: '5.8rem' }}>
               <SmallAnchor href="/signin" text="로그인" />
