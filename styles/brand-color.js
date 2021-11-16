@@ -1,7 +1,4 @@
 export const brandColor = `
-.white-font {
-    color: #fff !important
-},
 
 .primary-blue {
     color: #3281f7 !important
@@ -91,4 +88,25 @@ export const brandColor = `
 },
 .indication-yellow {
     color: #fce554 !important
+},
+
+.font-color-0 {
+    color: #fff !important
+},
+.font-color-20 {
+    color: #f3f3f3 !important
+},
+.font-color-40 {
+    color: #e4e4e4 !important
+},
+.font-color-60 {
+    color: #77777 !important
+},
+.font-color-80 {
+    color: #333333 !important
+},
+.font-color-100 {
+    color: #080808 !important
+}
 `
+

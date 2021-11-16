@@ -9,22 +9,22 @@ import { Button } from 'components/button';
 const HomePageStyle = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 18.5rem;
-  padding-bottom: 16rem;
   margin: 0 auto;
+  height: inherit;
 `;
 
 const Home: NextPage = () => {
   return (
     <HomePageStyle>
-      <Section>
-        <Image src="/main.webp" width="840" height="420" alt="welcome wesaver" loading="eager" />;
+      <Section style={{ flex: '72 auto' }}>
+        <Image src="/main.webp" width="840" height="420" alt="welcome wesaver" loading="eager" objectFit="contain" />;
       </Section>
-      <Section style={{ paddingTop: '16.8rem' }}>
+      <Section style={{ flex: '23 auto' }}>
         <Button
           onClick={() => router.push('/salary')}
           label="Let's WESAVE"
-          style={{ width: '25rem', height: '7rem', color: '#000', backgroundColor: '#dbeb27' }}
+          className="font-color-0 bg-primary-blue"
+          style={{ width: '25rem', height: '7rem' }}
         />
       </Section>
     </HomePageStyle>

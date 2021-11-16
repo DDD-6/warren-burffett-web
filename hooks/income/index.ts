@@ -1,12 +1,26 @@
 import { Reducer, useReducer, useCallback } from 'react';
+import { useQuery } from 'react-query';
+import { isSameDay, setDate, setMonth } from 'date-fns';
 
 import { Income } from '../../entities';
-import { checkHour, checkMonth, checkWeek } from '../../common/utils';
+
+import {
+  calcBusinessDay,
+  calcPaseedTimeToSeconds,
+  calcPassedDayToSeconds,
+  calcWorkingTime,
+  convertDayToSeconds,
+  convertDayToStringType,
+  convertTimeToSeconds,
+  getLocalStorageItem,
+  checkHour,
+  checkMonth,
+} from 'common/utils';
 
 export type SalaryType = Income & {
   startTime: number;
   quitTime: number;
-  workday: number;
+  workday: number[];
   payday: number;
 };
 
@@ -21,7 +35,11 @@ type Action =
     }
   | {
       type: 'SET_WORKDAY';
-      payload: SalaryType['workday'];
+      payload: number;
+    }
+  | {
+      type: 'REMOVE_WORKDAY';
+      payload: number;
     }
   | {
       type: 'SET_PAYDAY';
@@ -78,7 +96,13 @@ const reducer = (state: SalaryType, action: Action): SalaryType => {
     case 'SET_WORKDAY': {
       return {
         ...state,
-        workday: action.payload,
+        workday: [...state.workday, action.payload],
+      };
+    }
+    case 'REMOVE_WORKDAY': {
+      return {
+        ...state,
+        workday: state.workday.filter(item => item !== action.payload),
       };
     }
     default: {
@@ -90,7 +114,7 @@ const reducer = (state: SalaryType, action: Action): SalaryType => {
 const initialState = {
   startTime: 0,
   quitTime: 0,
-  workday: 0,
+  workday: [],
   payday: 0,
   income: 0,
 };
@@ -123,8 +147,13 @@ export const useSalaryInput = () => {
 
   const onChangeQuitTime = useCallback(
     (quitTime: string) => {
-      if (isNaN(+quitTime) || !checkHour(+quitTime) || +quitTime - state.startTime < 0) {
+      if (isNaN(+quitTime) || !checkHour(+quitTime)) {
         dispatch({ type: 'SET_QUITTIME', payload: 24 });
+        return;
+      }
+
+      if (+quitTime - state.startTime < 0) {
+        dispatch({ type: 'SET_QUITTIME', payload: +quitTime + 12 > 24 ? 24 : +quitTime + 12 });
         return;
       }
 
@@ -136,7 +165,7 @@ export const useSalaryInput = () => {
   const onChangePayday = useCallback(
     (payday: string) => {
       if (isNaN(+payday) || !checkMonth(+payday)) {
-        dispatch({ type: 'SET_PAYDAY', payload: 0 });
+        dispatch({ type: 'SET_PAYDAY', payload: 31 });
         return;
       }
 
@@ -146,13 +175,12 @@ export const useSalaryInput = () => {
   );
 
   const onChangeWorkday = useCallback(
-    (workday: string) => {
-      if (isNaN(+workday) || !checkWeek(+workday)) {
-        dispatch({ type: 'SET_WORKDAY', payload: 0 });
+    (workday: number, { isSelected }: { isSelected: boolean }) => {
+      if (isSelected) {
+        dispatch({ type: 'REMOVE_WORKDAY', payload: workday });
         return;
       }
-
-      dispatch({ type: 'SET_WORKDAY', payload: +workday });
+      dispatch({ type: 'SET_WORKDAY', payload: workday });
     },
     [dispatch],
   );
@@ -179,23 +207,85 @@ export const useSalaryInput = () => {
   };
 };
 
-export const useSalaryStorage = () => {
-  const setSalary = (salary: SalaryType) => {
-    const salaryTemp = JSON.stringify(salary);
-    localStorage.setItem('salary', salaryTemp);
-  };
+const convertPassedTimeToPercentage = () => {
+  const salary = <SalaryType>getLocalStorageItem('salary');
 
-  const getSalary = () => {
-    const salaryTemp = localStorage.getItem('salary');
+  if (!salary) {
+    return 0;
+  }
 
-    if (!salaryTemp) {
-      return initialState;
-    }
+  const passedTime = calcPaseedTimeToSeconds(salary.startTime);
 
-    const salary = JSON.parse(salaryTemp);
+  const workingTime = calcWorkingTime(salary.startTime, salary.quitTime);
+  const workingTimeToSeconds = convertTimeToSeconds(workingTime);
+  const percentage = (passedTime / workingTimeToSeconds) * 100;
+  const result = percentage < 0 ? 100 : percentage;
 
-    return salary;
-  };
+  return result >= 100 ? 100 : result;
+};
 
-  return { setSalary, getSalary };
+const convertPassedDayToPercentage = () => {
+  const salary = <SalaryType>getLocalStorageItem('salary');
+
+  if (!salary) {
+    return 0;
+  }
+  let passedWorkingDay = 0;
+  const current = new Date();
+  const startDay = setDate(current, salary.payday);
+  const startMonth = salary.payday > current.getDate() ? current.getMonth() - 1 : current.getMonth();
+
+  if (!isSameDay(startDay, current)) {
+    passedWorkingDay = calcBusinessDay(salary.workday, {
+      start: convertDayToStringType(setMonth(setDate(new Date(), salary.payday), startMonth)),
+      end: convertDayToStringType(new Date()),
+    });
+  }
+
+  const passedTime = calcPassedDayToSeconds(passedWorkingDay, salary.startTime);
+  const workingDays = calcBusinessDay(salary.workday, {
+    start: convertDayToStringType(setMonth(setDate(new Date(), salary.payday), startMonth)),
+    end: convertDayToStringType(setMonth(setDate(new Date(), salary.payday), startMonth + 1)),
+  });
+  const result = (passedTime / convertDayToSeconds(workingDays)) * 100;
+
+  return result >= 100 ? 100 : result;
+};
+
+const calcCurrentSalary = () => {
+  const salary = <SalaryType>getLocalStorageItem('salary');
+
+  if (!salary) {
+    return { currentSalary: 0, percentage: 0 };
+  }
+  const percentage = convertPassedDayToPercentage();
+  const result = (salary.income + (salary?.additional || 0)) * percentage;
+
+  return { currentSalary: result, percentage };
+};
+
+const calcCurrentWages = () => {
+  const salary = <SalaryType>getLocalStorageItem('salary');
+
+  if (!salary) {
+    return { currentWage: 0, percentage: 0 };
+  }
+
+  const percentage = convertPassedTimeToPercentage();
+
+  const result = salary.income * percentage;
+
+  return { currentWage: result, percentage };
+};
+
+export const useMonthWages = () => {
+  return useQuery('month-wage', () => calcCurrentSalary(), {
+    refetchInterval: 3600,
+  });
+};
+
+export const useDayWages = () => {
+  return useQuery('day-wage', () => calcCurrentWages(), {
+    refetchInterval: 3600,
+  });
 };

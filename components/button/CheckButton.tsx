@@ -43,7 +43,7 @@ export default function CheckButton({
 }: CheckButtonProps & ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
     <IconButton {...props}>
-      <span css={checkCss({ backgroundColor: isChecked ? '#000' : '#f3f3f3' })} />
+      <span css={checkCss({ backgroundColor: isChecked ? '#3281f7' : '#f3f3f3' })} />
     </IconButton>
   );
 }

@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { InputHTMLAttributes } from 'react';
+import { InputHTMLAttributes, ClassAttributes } from 'react';
 
 const ClearInputCss = css`
   border: 0;
@@ -14,6 +14,6 @@ const ClearInputCss = css`
   }
 `;
 
-export function ClearInput(props: InputHTMLAttributes<HTMLInputElement>) {
+export function ClearInput(props: ClassAttributes<HTMLInputElement> & InputHTMLAttributes<HTMLInputElement>) {
   return <input css={ClearInputCss} {...props} />;
 }

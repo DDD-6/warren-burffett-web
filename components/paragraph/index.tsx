@@ -11,6 +11,7 @@ export const P1 = styled.p`
 export const P2 = styled.p`
   font-weight: ${weightRegular};
   font-size: 9.6rem;
+  line-height: 1.6;
 `;
 
 export const P3 = styled.p`

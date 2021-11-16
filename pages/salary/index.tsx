@@ -4,14 +4,15 @@ import Income from './income';
 import Additional from './additional';
 import { useStage } from './stage';
 
-import { useSalaryInput, useSalaryStorage, SalaryType } from 'hooks/income';
+import { useSalaryInput, SalaryType } from 'hooks/income';
+import { getLocalStorageItem, removeLocalStorageItem, setLocalStorageItem } from 'common/utils';
 
 const SalaryPageStyle = styled.div`
   display: flex;
   flex-direction: column;
   padding-top: 11.2rem;
   margin: 0 auto;
-  max-width: 1048px;
+  max-width: 110.6rem;
 `;
 
 export default function Salary() {
@@ -25,7 +26,7 @@ export default function Salary() {
     onChangeWorkday,
     state,
   } = useSalaryInput();
-  const { setSalary } = useSalaryStorage();
+  // const { setSalary } = useSalaryStorage();
 
   const onChangePage = () => {
     dispatch({ type: 'Next_Page' });
@@ -33,7 +34,12 @@ export default function Salary() {
 
   const onSaveValue = (salary: SalaryType) => {
     dispatch({ type: 'DONE' });
-    setSalary(salary);
+
+    if (getLocalStorageItem('salary')) {
+      removeLocalStorageItem('salary');
+    }
+
+    setLocalStorageItem('salary', salary);
   };
 
   return (

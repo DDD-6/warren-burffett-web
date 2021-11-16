@@ -15,14 +15,10 @@ interface MenuProps {
 
 const customStyles = {
   content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
+    inset: 0,
     marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    width: '100vw',
-    height: '100vh',
+    width: '100%',
+    height: '100%',
     backgroundColor: '#080808',
     overflow: 'hidden',
   },
@@ -31,7 +27,7 @@ const customStyles = {
 const Nav = styled.nav`
   display: flex;
   flex-direction: column;
-  padding-top: 18.7rem;
+  padding-top: min(187px, 18.5%);
   align-items: center;
   height: 100%;
 `;
@@ -59,22 +55,22 @@ export default function Menu({ layoutWidth, isOpen, closeModal }: MenuProps) {
         </IconButton>
       </Header>
       <Nav>
-        <P1 className={classnames('white-font', { 'secondary-green': path === '/' })}>
+        <P1 className={classnames('font-color-0', { 'secondary-green': path === '/' })}>
           <Link href="/">
             <a onClick={onCloseModal}>WESAVE</a>
           </Link>
         </P1>
-        <P1 className={classnames('white-font', { 'secondary-green': path === 'working-timer' })}>
-          <Link href="/working-timer">
+        <P1 className={classnames('font-color-0', { 'secondary-green': path === 'working-timer' })}>
+          <Link href="/timer">
             <a onClick={onCloseModal}>Working-Timer</a>
           </Link>
         </P1>
-        <P1 className={classnames('white-font', { 'secondary-green': path === 'challenge' })}>
+        <P1 className={classnames('font-color-0', { 'secondary-green': path === 'challenge' })}>
           <Link href="/challenge">
             <a onClick={onCloseModal}>Challenge</a>
           </Link>
         </P1>
-        <P1 className={classnames('white-font', { 'secondary-green': path === 'mypage' })}>
+        <P1 className={classnames('font-color-0', { 'secondary-green': path === 'mypage' })}>
           <Link href="/mypage">
             <a onClick={onCloseModal}>My Page</a>
           </Link>

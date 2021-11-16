@@ -29,3 +29,23 @@ export const setRefreshToken = (refreshToken: string, options?: CookieSetOptions
 export const getRefreshToken = () => {
   return cookies.get('refreshToken');
 };
+
+export const getLocalStorageItem = <T>(key: string) => {
+  const data = localStorage.getItem(key);
+
+  if (!data) {
+    return null;
+  }
+
+  const result: T = JSON.parse(data);
+  return result;
+};
+
+export const setLocalStorageItem = (key: string, data: any) => {
+  const value = JSON.stringify(data);
+  return localStorage.setItem(key, value);
+};
+
+export const removeLocalStorageItem = (key: string) => {
+  return localStorage.removeItem(key);
+};

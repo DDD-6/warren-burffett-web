@@ -10,4 +10,5 @@ export * from './SmallText';
 export * from './UnderlineInput';
 export * from './Section';
 
-export { default as Menu } from './Menu';
+export { default as Menu } from './menu';
+export { default as RangeBar } from './range-bar';
