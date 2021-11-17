@@ -15,6 +15,7 @@ import {
   limeUnderlineInput,
   loginPanel,
   loginLayout,
+  lastField,
 } from '@styles/user';
 import { rowJustifyCenter, rowJustifySpaceAround } from '@styles/index';
 import { loginAPI, socialLoginAPI } from '@api/user';
@@ -116,7 +117,7 @@ const SignIn = () => {
                 />
                 <ErrorMessage name="email" component="div" />
               </div>
-              <div css={fieldLayout}>
+              <div css={[fieldLayout, lastField]}>
                 <Field
                   name="password"
                   type="password"
@@ -150,7 +151,7 @@ const SignIn = () => {
                 }
               />
               <div css={rowJustifyCenter} style={{ marginBottom: '4.8rem' }}>
-                <SmallAnchor href="/" text="비밀번호 찾기" marginRight="1.6rem" />
+                <SmallAnchor href="/forgot-password" text="비밀번호 찾기" marginRight="1.6rem" />
                 <SmallSpan text="|" marginRight="1.6rem" />
                 <SmallAnchor href="/signup" text="회원가입" />
               </div>

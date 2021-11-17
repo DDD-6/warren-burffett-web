@@ -12,6 +12,7 @@ import {
   formLayout,
   grayUnderlineInput,
   inputError,
+  lastField,
   limeUnderlineInput,
   loginLayout,
   loginPanel,
@@ -130,7 +131,7 @@ const SignUp = () => {
                 {!errors.password && <SmallSpan text="8자 이상, 숫자 포함" color="#3281F7" marginTop="0.4rem" />}
                 <ErrorMessage name="password" component="div" />
               </div>
-              <div css={fieldLayout}>
+              <div css={[fieldLayout, lastField]}>
                 <Field
                   name="passwordCheck"
                   type="password"

@@ -41,10 +41,10 @@ export const fieldLayout = css`
     letter-spacing: -0.25px;
     color: #e44e59;
   }
+`;
 
-  &:last-of-type {
-    margin-bottom: 4.8rem;
-  }
+export const lastField = css`
+  margin-bottom: 4.8rem;
 `;
 
 export const underlineInput = css`
