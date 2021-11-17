@@ -1,11 +1,16 @@
 import { css } from '@emotion/react';
 
-export const loginPanel = css`
+export const loginLayout = css`
+  display: flex;
+  justify-content: center;
   width: 100%;
-  padding: 4.8rem 2.4rem 0;
+`;
+
+export const loginPanel = css`
+  width: 32.7rem;
 
   @media (min-width: 768px) {
-    padding: 22.2rem 39.2rem 0;
+    width: 37.6rem;
   }
 `;
 
