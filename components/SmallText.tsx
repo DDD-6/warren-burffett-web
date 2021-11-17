@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import Link from 'next/link';
 
-type spanColor = '#777777' | '#ff9233';
+type spanColor = '#777777' | '#3281F7';
 
 interface SmallTextProps {
   text: string;

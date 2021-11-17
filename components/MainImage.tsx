@@ -5,11 +5,7 @@ interface MainImageProps {
 }
 
 const MainImage = ({ imageUrl }: MainImageProps) => {
-  return (
-    <div css={mainImage} style={{ background: `${imageUrl} no-repeat center center / cover` }}>
-      image
-    </div>
-  );
+  return <div css={mainImage} style={{ background: `${imageUrl} no-repeat center center / cover` }}></div>;
 };
 
 export const mainImage = css`

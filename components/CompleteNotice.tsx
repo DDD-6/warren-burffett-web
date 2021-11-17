@@ -38,6 +38,13 @@ export const welcomeText = css`
     letter-spacing: -0.25px;
     color: #080808;
   }
+
+  @media (min-width: 768px) {
+    span {
+      font-size: 3.6rem;
+      line-height: 1.3;
+    }
+  }
 `;
 
 export default CompleteNotice;
