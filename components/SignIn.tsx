@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Form, Formik, FormikHelpers, Field, ErrorMessage } from 'formik';
+import { useMutation } from 'react-query';
 import * as Yup from 'yup';
 
 import { Button, CircleButton } from './Button';
@@ -16,6 +17,7 @@ import {
   loginLayout,
 } from '@styles/user';
 import { rowJustifyCenter, rowJustifySpaceAround } from '@styles/index';
+import { loginAPI, socialLoginAPI } from '@api/user';
 
 Yup.setLocale({
   string: {
@@ -27,6 +29,11 @@ export interface SignInValues {
   email: string;
   password: string;
 }
+
+type socialType = 'KAKAO' | 'NAVER' | 'GOOGLE';
+export type SocialType = {
+  socialType: socialType;
+};
 
 const SignInSchema = Yup.object().shape({
   email: Yup.string().email().required('이메일을 입력해주세요'),
@@ -40,6 +47,33 @@ const SignIn = () => {
     password: '',
   });
 
+  const login = useMutation(async (params: SignInValues) => await loginAPI(params), {
+    onError: err => {
+      console.log(err);
+      setIsAuthenticated(false);
+    },
+    onSuccess: data => {
+      console.log(data);
+      console.log('로그인 성공');
+      setIsAuthenticated(true);
+    },
+  });
+
+  const socialLogin = useMutation(async (params: SocialType) => await socialLoginAPI(params), {
+    onError: err => {
+      console.log(err);
+    },
+    onSuccess: data => {
+      console.log(data);
+      console.log('로그인 성공');
+    },
+  });
+
+  useEffect(() => {
+    console.log(isAuthenticated);
+    console.log(finalInfo);
+  }, [isAuthenticated, finalInfo]);
+
   return (
     <div css={loginLayout}>
       <div css={loginPanel}>
@@ -51,9 +85,12 @@ const SignIn = () => {
           validationSchema={SignInSchema}
           onSubmit={(values, { setSubmitting }: FormikHelpers<SignInValues>) => {
             setTimeout(() => {
-              console.log(JSON.stringify(values));
+              try {
+                login.mutate(values);
+              } catch (err) {
+                setIsAuthenticated(false);
+              }
               setSubmitting(false);
-              setIsAuthenticated(false);
               setFinalInfo(values);
             }, 500);
           }}
@@ -118,9 +155,9 @@ const SignIn = () => {
                 <SmallAnchor href="/signup" text="회원가입" />
               </div>
               <div css={rowJustifySpaceAround}>
-                <CircleButton sns="naver" />
-                <CircleButton sns="kakao" />
-                <CircleButton sns="google" />
+                <CircleButton type="button" sns="naver" onClick={() => socialLogin.mutate({ socialType: 'NAVER' })} />
+                <CircleButton type="button" sns="kakao" onClick={() => socialLogin.mutate({ socialType: 'KAKAO' })} />
+                <CircleButton type="button" sns="google" onClick={() => socialLogin.mutate({ socialType: 'GOOGLE' })} />
               </div>
             </Form>
           )}

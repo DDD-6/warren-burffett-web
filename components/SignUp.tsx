@@ -1,4 +1,6 @@
 import { Form, Formik, FormikHelpers, Field, ErrorMessage } from 'formik';
+import { useMutation } from 'react-query';
+import { useRouter } from 'next/router';
 import * as Yup from 'yup';
 
 import { Button, CircleButton } from './Button';
@@ -15,7 +17,7 @@ import {
   loginPanel,
   underlineInput,
 } from '@styles/user';
-import { rowJustifyFlexEnd, rowJustifySpaceAround } from '@styles/index';
+import { rowJustifyCenter, rowJustifySpaceAround } from '@styles/index';
 import { signupAPI } from '@api/user';
 
 Yup.setLocale({
@@ -45,7 +47,20 @@ const SignUpSchema = Yup.object().shape({
 });
 
 const SignUp = () => {
-  // const router = useRouter();
+  const router = useRouter();
+
+  const signup = useMutation(async (params: SignUpValues) => await signupAPI(params), {
+    onError: err => {
+      console.log(err);
+    },
+    onSuccess: data => {
+      console.log(data);
+      console.log('회원가입 성공!');
+      // 회원가입 완료 페이지로 이동
+      router.replace('/signup-success');
+      // 회원가입 input 초기화
+    },
+  });
 
   return (
     <div css={loginLayout}>
@@ -62,13 +77,8 @@ const SignUp = () => {
           onSubmit={(values: SignUpValues, { setSubmitting }: FormikHelpers<SignUpValues>) => {
             setTimeout(async () => {
               try {
-                const { data: user } = await signupAPI({ ...values });
-                if (user) {
-                  // router.push('/');
-                  // 모달 띄우거나 새로운 페이지 만들거나
-                }
+                signup.mutate(values);
               } catch (err) {
-                alert(err);
                 console.log(err);
               }
               setSubmitting(false);
@@ -117,7 +127,7 @@ const SignUp = () => {
                     errors.password && touched.password && inputError,
                   ]}
                 />
-                {!errors.password && <SmallSpan text="8자 이상, 숫자 포함" color="#ff9233" marginTop="0.4rem" />}
+                {!errors.password && <SmallSpan text="8자 이상, 숫자 포함" color="#3281F7" marginTop="0.4rem" />}
                 <ErrorMessage name="password" component="div" />
               </div>
               <div css={fieldLayout}>
@@ -134,14 +144,30 @@ const SignUp = () => {
                 />
                 <ErrorMessage name="passwordCheck" component="div" />
               </div>
-              <Button label="회원가입" type="submit" marginBottom="1.4rem" />
-              <div css={rowJustifyFlexEnd} style={{ marginBottom: '5.8rem' }}>
+              <Button
+                label="회원가입"
+                type="submit"
+                marginBottom="2.4rem"
+                backgroundColor={
+                  values.name !== '' &&
+                  values.email !== '' &&
+                  values.password !== '' &&
+                  values.passwordCheck !== '' &&
+                  !errors.name &&
+                  !errors.email &&
+                  !errors.password &&
+                  !errors.passwordCheck
+                    ? '#3281f7'
+                    : '#e4e4e4'
+                }
+              />
+              <div css={rowJustifyCenter} style={{ marginBottom: '4.8rem' }}>
                 <SmallAnchor href="/signin" text="로그인" />
               </div>
               <div css={rowJustifySpaceAround}>
-                <CircleButton sns="naver" />
-                <CircleButton sns="kakao" />
-                <CircleButton sns="google" />
+                <CircleButton type="button" sns="naver" />
+                <CircleButton type="button" sns="kakao" />
+                <CircleButton type="button" sns="google" />
               </div>
             </Form>
           )}

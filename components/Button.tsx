@@ -5,6 +5,8 @@ type textColor = '#fff' | '#000' | '#0B0B0B';
 type socialLogin = 'naver' | 'google' | 'kakao';
 
 interface ButtonProps {
+  width?: string;
+  height?: string;
   color?: textColor;
   backgroundColor?: string;
   marginBottom?: string;
@@ -26,8 +28,8 @@ interface ButtonProps {
  */
 export const Button = ({
   color = '#fff',
-  backgroundColor,
   marginBottom = '0',
+  backgroundColor,
   borderRadius,
   label,
   type,
@@ -45,21 +47,34 @@ export const Button = ({
   );
 };
 
-export const CircleButton = ({ borderRadius = '100%', sns = 'naver' }: ButtonProps) => {
-  let backgroundImage = 'url(/google.png)';
+export const CircleButton = ({
+  borderRadius = '100%',
+  width,
+  height,
+  backgroundColor,
+  marginBottom,
+  sns,
+  type,
+  onClick,
+}: ButtonProps) => {
+  let backgroundImage = '';
   if (sns === 'naver') backgroundImage = 'url(/naver.png)';
   else if (sns === 'kakao') backgroundImage = 'url(/kakao.png)';
+  else if (sns === 'google') backgroundImage = 'url(/google.png)';
 
   return (
     <button
+      type={type}
       css={circleButtonDefault}
       style={{
         background: `${backgroundImage} no-repeat center center / cover`,
+        width,
+        height,
         borderRadius,
+        backgroundColor,
+        marginBottom,
       }}
-      onClick={() => {
-        console.log(sns);
-      }}
+      onClick={onClick}
     ></button>
   );
 };
