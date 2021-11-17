@@ -2,12 +2,15 @@ import { NextPage } from 'next';
 
 import SignUp from '@components/SignUp';
 import MainImage from '@components/MainImage';
+import DivideLine from '@components/DivideLine';
+import { mainLayout } from '@styles/index';
 
 const SignUpPage: NextPage = () => {
   return (
-    <div style={{ display: 'flex', width: '100%' }}>
+    <div css={mainLayout}>
       <SignUp />
-      <MainImage imageUrl />
+      <DivideLine />
+      <MainImage imageUrl="" />
     </div>
   );
 };

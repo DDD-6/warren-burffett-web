@@ -4,6 +4,13 @@ export const loginLayout = css`
   display: flex;
   justify-content: center;
   width: 100%;
+  padding: 4.8rem 0;
+
+  @media (min-width: 768px) {
+    align-items: center;
+    height: 100vh;
+    padding: 0;
+  }
 `;
 
 export const loginPanel = css`
@@ -102,7 +109,7 @@ export const checkField = css`
     background-color: var(--background-checkbox);
   }
 
-  // input 안에 들어갈 check
+  /* input 안에 들어갈 check */
   span::after {
     display: none;
     width: 0.6rem;
@@ -118,7 +125,7 @@ export const checkField = css`
     transform: rotate(45deg);
   }
 
-  // check 상태로 변하면 check icon이 보임
+  /* check 상태로 변하면 check icon이 보임 */
   input:checked ~ span::after {
     display: block;
   }
