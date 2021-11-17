@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Form, Formik, FormikHelpers, Field, ErrorMessage } from 'formik';
 import { useMutation } from 'react-query';
 import { useRouter } from 'next/router';
@@ -49,14 +50,17 @@ const SignUpSchema = Yup.object().shape({
 
 const SignUp = () => {
   const router = useRouter();
+  const [existUser, setExistUser] = useState(false);
 
   const signup = useMutation(async (params: SignUpValues) => await signupAPI(params), {
     onError: err => {
       console.log(err);
+      setExistUser(true);
     },
     onSuccess: data => {
       console.log(data);
       console.log('회원가입 성공!');
+      setExistUser(false);
       // 회원가입 완료 페이지로 이동
       router.replace('/signup-success');
       // 회원가입 input 초기화
@@ -115,6 +119,7 @@ const SignUp = () => {
                   ]}
                 />
                 <ErrorMessage name="email" component="div" />
+                {existUser && <div css={inputError}>위세이브에 이미 가입된 계정입니다.</div>}
               </div>
               <div css={fieldLayout}>
                 <Field
@@ -128,7 +133,9 @@ const SignUp = () => {
                     errors.password && touched.password && inputError,
                   ]}
                 />
-                {!errors.password && <SmallSpan text="8자 이상, 숫자 포함" color="#3281F7" marginTop="0.4rem" />}
+                {(values.password === '' || !errors.password) && (
+                  <SmallSpan text="8자 이상, 숫자 포함" color="#3281F7" marginTop="0.4rem" />
+                )}
                 <ErrorMessage name="password" component="div" />
               </div>
               <div css={[fieldLayout, lastField]}>
