@@ -7,6 +7,7 @@ import Head from 'next/head';
 
 import { backgroundColor } from '../styles/background-color';
 import { brandColor } from '../styles/brand-color';
+import { fontSize } from '../styles/font-size';
 
 import MainLayout from 'Layout/mainlayout';
 
@@ -28,6 +29,11 @@ function MyApp({ Component, pageProps }: AppProps) {
           <Global
             styles={css`
               ${backgroundColor}
+            `}
+          />
+          <Global
+            styles={css`
+              ${fontSize}
             `}
           />
           <MainLayout>

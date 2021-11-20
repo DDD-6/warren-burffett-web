@@ -9,14 +9,14 @@ export const backgroundColor = `
     background-color: #e4e4e4 !important
 },
 .bg-60 {
-    background-color: #77777 !important
+    background-color: #777777 !important
 },
 .bg-80 {
     background-color: #333333 !important
 },
 .bg-100 {
     background-color: #080808 !important
-}
+},
 
 .bg-primary-blue{
     background-color: #3281f7 !important

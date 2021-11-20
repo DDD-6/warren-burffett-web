@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 import Modal from 'react-modal';
 import { useRouter } from 'next/router';
 
-import { P1, Header, IconButton } from 'components';
+import { Header, IconButton } from 'components';
 
 interface MenuProps {
   layoutWidth: number;
@@ -37,6 +37,7 @@ Modal.setAppElement('body');
 export default function Menu({ layoutWidth, isOpen, closeModal }: MenuProps) {
   const { pathname } = useRouter();
   const path = pathname.split('/')[1] || '/';
+  console.log(path);
   const onCloseModal = () => {
     closeModal();
   };
@@ -55,26 +56,40 @@ export default function Menu({ layoutWidth, isOpen, closeModal }: MenuProps) {
         </IconButton>
       </Header>
       <Nav>
-        <P1 className={classnames('font-color-0', { 'secondary-green': path === '/' })}>
-          <Link href="/">
-            <a onClick={onCloseModal}>WESAVE</a>
-          </Link>
-        </P1>
-        <P1 className={classnames('font-color-0', { 'secondary-green': path === 'working-timer' })}>
-          <Link href="/timer">
-            <a onClick={onCloseModal}>Working-Timer</a>
-          </Link>
-        </P1>
-        <P1 className={classnames('font-color-0', { 'secondary-green': path === 'challenge' })}>
-          <Link href="/challenge">
-            <a onClick={onCloseModal}>Challenge</a>
-          </Link>
-        </P1>
-        <P1 className={classnames('font-color-0', { 'secondary-green': path === 'mypage' })}>
-          <Link href="/mypage">
-            <a onClick={onCloseModal}>My Page</a>
-          </Link>
-        </P1>
+        <Link href="/">
+          <a
+            className={classnames('heading1', path === '/' ? 'secondary-green' : 'font-color-0')}
+            onClick={onCloseModal}
+          >
+            WESAVE
+          </a>
+        </Link>
+
+        <Link href="/timer">
+          <a
+            className={classnames('heading1', path === 'timer' ? 'secondary-green' : 'font-color-0')}
+            onClick={onCloseModal}
+          >
+            Working-Timer
+          </a>
+        </Link>
+
+        <Link href="/challenge">
+          <a
+            className={classnames('heading1', path === 'challenge' ? 'secondary-green' : 'font-color-0')}
+            onClick={onCloseModal}
+          >
+            Challenge
+          </a>
+        </Link>
+        <Link href="/mypage">
+          <a
+            className={classnames('heading1', path === 'mypage' ? 'secondary-green' : 'font-color-0')}
+            onClick={onCloseModal}
+          >
+            My Page
+          </a>
+        </Link>
       </Nav>
     </Modal>
   );
