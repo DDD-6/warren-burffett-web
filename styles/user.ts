@@ -1,54 +1,62 @@
 import { css } from '@emotion/react';
 
-export const centerLayout = css`
+export const loginLayout = css`
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 4.8rem 0;
+
+  @media (min-width: 768px) {
+    align-items: center;
+    height: 100vh;
+    padding: 0;
+  }
+`;
+
+export const loginPanel = css`
+  width: 32.7rem;
+
+  @media (min-width: 768px) {
+    width: 37.6rem;
+  }
 `;
 
 export const formLayout = css`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  width: 37.6rem;
-  /* button {
-    margin-bottom: 1rem;
-
-    &:hover {
-      cursor: pointer;
-    }
-  } */
 `;
 
 export const fieldLayout = css`
   width: 100%;
-  margin-bottom: 3.6rem;
+  margin-bottom: 3.2rem;
 
   input::placeholder {
-    color: #cfcfcf;
+    color: #e4e4e4;
   }
 
   & > div {
     margin-top: 0.4rem;
     font-size: 1.4rem;
-    line-height: 137%;
-    color: #fd4e4e;
+    line-height: 1.2;
+    letter-spacing: -0.25px;
+    color: #e44e59;
   }
+`;
 
-  &:last-of-type {
-    margin-bottom: 4.8rem;
-  }
+export const lastField = css`
+  margin-bottom: 4.8rem;
 `;
 
 export const underlineInput = css`
   width: 100%;
-  height: 3.9rem;
+  height: 3.6rem;
   padding-bottom: 1.2rem;
   font-size: 2rem;
-  line-height: 137%;
+  line-height: 1.4;
   border: none;
-  border-bottom: 1.5px solid #000;
-  color: #202020;
+  border-bottom: 1.5px solid #080808;
+  color: #080808;
+  caret-color: #3281f7;
 `;
 
 export const grayUnderlineInput = css`
@@ -56,11 +64,11 @@ export const grayUnderlineInput = css`
 `;
 
 export const limeUnderlineInput = css`
-  border-bottom-color: #dbeb27;
+  border-bottom-color: #3281f7;
 `;
 
 export const inputError = css`
-  border-bottom-color: #fd4e4e;
+  border-bottom-color: #e44e59;
 `;
 
 export const checkboxLayout = css`
@@ -101,7 +109,7 @@ export const checkField = css`
     background-color: var(--background-checkbox);
   }
 
-  // input 안에 들어갈 check
+  /* input 안에 들어갈 check */
   span::after {
     display: none;
     width: 0.6rem;
@@ -117,7 +125,7 @@ export const checkField = css`
     transform: rotate(45deg);
   }
 
-  // check 상태로 변하면 check icon이 보임
+  /* check 상태로 변하면 check icon이 보임 */
   input:checked ~ span::after {
     display: block;
   }

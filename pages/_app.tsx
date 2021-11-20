@@ -4,12 +4,16 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { CookiesProvider } from 'react-cookie';
 import { css, Global } from '@emotion/react';
 import Head from 'next/head';
+import axios from 'axios';
 
 import { backgroundColor } from '../styles/background-color';
 import { brandColor } from '../styles/brand-color';
 import { fontSize } from '../styles/font-size';
 
 import MainLayout from 'Layout/mainlayout';
+
+axios.defaults.baseURL = 'http://3.37.71.132:8080';
+axios.defaults.withCredentials = true;
 
 const queryCLient = new QueryClient();
 

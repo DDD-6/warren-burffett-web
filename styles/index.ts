@@ -1,5 +1,20 @@
 import { css } from '@emotion/react';
 
+export const mainLayout = css`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+`;
+
+export const rowJustifyCenter = css`
+  display: flex;
+  justify-content: center;
+`;
+
 export const rowJustifyFlexEnd = css`
   display: flex;
   justify-content: flex-end;

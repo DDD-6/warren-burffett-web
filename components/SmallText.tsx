@@ -1,12 +1,13 @@
 import { css } from '@emotion/react';
 import Link from 'next/link';
 
-type spanColor = '#969696' | '#ff9233';
+type spanColor = '#777777' | '#3281F7';
 
 interface SmallTextProps {
   text: string;
   color?: spanColor;
   marginTop?: string;
+  marginRight?: string;
   fontSize?: string;
   lineHeight?: string;
 }
@@ -17,13 +18,14 @@ interface SmallAnchorProps {
 
 export const SmallSpan = ({
   text,
-  color = '#969696',
+  color = '#777777',
   marginTop = '0',
-  fontSize = '1.4rem',
-  lineHeight = '137%',
+  marginRight,
+  fontSize,
+  lineHeight,
 }: SmallTextProps) => {
   return (
-    <span css={smallSpanDefault} style={{ color, marginTop, fontSize, lineHeight }}>
+    <span css={smallSpanDefault} style={{ color, marginTop, marginRight, fontSize, lineHeight }}>
       {text}
     </span>
   );
@@ -32,17 +34,23 @@ export const SmallSpan = ({
 export const SmallAnchor = ({
   href,
   text,
-  color = '#969696',
-  fontSize = '1.6rem',
-  lineHeight = '137%',
+  color = '#777777',
+  fontSize,
+  lineHeight,
+  marginRight,
 }: SmallTextProps & SmallAnchorProps) => {
   return (
     <Link href={href}>
-      <a style={{ color, fontSize, lineHeight }}>{text}</a>
+      <a css={smallSpanDefault} style={{ color, fontSize, lineHeight, marginRight }}>
+        {text}
+      </a>
     </Link>
   );
 };
 
 const smallSpanDefault = css`
   display: block;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  letter-spacing: -0.25px;
 `;
