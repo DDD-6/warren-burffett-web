@@ -16,6 +16,12 @@
   "rules": {
     // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
     "@typescript-eslint/explicit-function-return-type": "off",
+    "no-unused-vars": [
+      2,
+      {
+        "args": "none"
+      }
+    ],
     "class-methods-use-this": 0,
     "no-undef": 0,
     "import/extensions": 0,

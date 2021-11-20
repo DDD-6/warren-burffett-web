@@ -1,4 +1,4 @@
-export * from './Button';
-export { default as IconButton } from './IconButton';
-export { default as CheckButton } from './CheckButton';
-export { default as DayButton } from './DayButton';
+export * from './default';
+export { default as IconButton } from './icon-button';
+export { default as CheckButton } from './check-button';
+export { default as DayButton } from './day-button';

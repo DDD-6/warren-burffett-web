@@ -3,8 +3,7 @@ import styled from '@emotion/styled';
 import router from 'next/router';
 import Image from 'next/image';
 
-import { Section } from 'components/Section';
-import { Button } from 'components/button';
+import { Section, Button } from 'components';
 
 const HomePageStyle = styled.div`
   display: flex;

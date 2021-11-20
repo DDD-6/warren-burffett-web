@@ -1,12 +1,12 @@
 import { Form, Formik, FormikHelpers, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-import { Button } from './button/Button';
+import { Button } from './button/default';
 import BoldTitle from './BoldTitle';
 import { SmallAnchor } from './SmallText';
 
 import {
-  centerLayout,
+  // centerLayout,
   fieldLayout,
   formLayout,
   grayUnderlineInput,
@@ -32,7 +32,7 @@ const EmailSchema = Yup.object().shape({
 
 const PasswordReset = () => {
   return (
-    <div css={centerLayout}>
+    <div>
       <Formik
         initialValues={{
           email: '',

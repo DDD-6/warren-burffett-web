@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 
-import { Button, CircleButton } from './Button';
+import { Button, CircleButton } from './button';
 
 import { loginLayout, loginPanel } from '@styles/user';
 

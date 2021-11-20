@@ -4,7 +4,7 @@ import { useMutation } from 'react-query';
 import { useRouter } from 'next/router';
 import * as Yup from 'yup';
 
-import { Button, CircleButton } from './button/Button';
+import { Button, CircleButton } from './button/default';
 import BoldTitle from './BoldTitle';
 import { SmallAnchor, SmallSpan } from './SmallText';
 

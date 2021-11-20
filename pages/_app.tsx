@@ -10,9 +10,12 @@ import { backgroundColor } from '../styles/background-color';
 import { brandColor } from '../styles/brand-color';
 import { fontSize } from '../styles/font-size';
 
+import { configs } from 'config';
 import MainLayout from 'Layout/mainlayout';
 
-axios.defaults.baseURL = 'http://3.37.71.132:8080';
+const { API_PROTOCOL, API_URL } = configs;
+
+axios.defaults.baseURL = `${API_PROTOCOL}://${API_URL}`;
 axios.defaults.withCredentials = true;
 
 const queryCLient = new QueryClient();

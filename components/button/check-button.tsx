@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes } from 'react';
 import { css } from '@emotion/react';
 
-import IconButton from './IconButton';
+import IconButton from './icon-button';
 
 const checkCss = ({ backgroundColor }: { backgroundColor: string }) => css`
   position: relative;

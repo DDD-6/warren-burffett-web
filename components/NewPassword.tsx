@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import * as Yup from 'yup';
 
 import { welcomeText } from './CompleteNotice';
-import { Button } from './Button';
+import { Button } from './button';
 import { SmallSpan } from './SmallText';
 
 import {

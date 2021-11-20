@@ -1,9 +1,8 @@
 import styled from '@emotion/styled';
 
-import Income from './income';
-import Additional from './additional';
-import { useStage } from './stage';
-
+import { useStage } from 'components/salary/stage';
+import Additional from 'components/salary/additional';
+import Income from 'components/salary/income';
 import { useSalaryInput, SalaryType } from 'hooks/income';
 import { getLocalStorageItem, removeLocalStorageItem, setLocalStorageItem } from 'common/utils';
 

@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 
 import { welcomeText } from './CompleteNotice';
 import { SmallAnchor } from './SmallText';
-import { Button } from './Button';
+import { Button } from './button';
 
 import {
   fieldLayout,
