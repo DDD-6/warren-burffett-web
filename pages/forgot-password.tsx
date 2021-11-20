@@ -1,18 +1,16 @@
-import { NextPage } from 'next';
-
-import SignUp from '@components/SignUp';
-import MainImage from '@components/MainImage';
+import CheckEmail from '@components/CheckEmail';
 import DivideLine from '@components/DivideLine';
+import MainImage from '@components/MainImage';
 import { mainLayout } from '@styles/index';
 
-const SignUpPage: NextPage = () => {
+const ForgotPasswordPage = () => {
   return (
     <div css={mainLayout}>
-      <SignUp />
+      <CheckEmail />
       <DivideLine />
       <MainImage imageUrl="" />
     </div>
   );
 };
 
-export default SignUpPage;
+export default ForgotPasswordPage;
