@@ -1,6 +1,7 @@
 import { AxiosRequestConfig } from 'axios';
 
-import { SignInDtoOut, SignUpDtoIn } from '../common/type/user';
+import { SignInDtoOut, SignUpDtoIn, Token } from '../common/type/user';
+import { User } from '../entities';
 
 import AxiosApi from './instance';
 
@@ -9,10 +10,27 @@ export class UserApi extends AxiosApi {
     super(advancedOptions);
   }
 
-  async signIn(body: { email: string; password: string }) {
+  async signIn(body: { email: string; password?: string }) {
     const response = await this.post<SignInDtoOut>('', body);
 
     return response.data;
+  }
+
+  async userInfo({ token }: { token: Token }): Promise<User> {
+    const response = await this.get('user/me', {
+      headers: {
+        Authorization: `${token.grantType} ${token.accessToken}`,
+      },
+    });
+
+    const { id, user_name, email, image, oauthtype } = response.data as any;
+    return {
+      email,
+      id,
+      name: user_name,
+      image,
+      oauthType: oauthtype,
+    };
   }
 
   async signUp(body: SignUpDtoIn) {
@@ -36,6 +54,12 @@ export class UserApi extends AxiosApi {
 
   async findPassword({ email }: { email: string }) {
     const response = await this.post('', email);
+
+    return response.data;
+  }
+
+  async resignUser(userId: number) {
+    const response = await this.delete(`/user/${userId}`);
 
     return response.data;
   }

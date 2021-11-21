@@ -247,7 +247,10 @@ const convertPassedDayToPercentage = () => {
     start: convertDayToStringType(setMonth(setDate(new Date(), salary.payday), startMonth)),
     end: convertDayToStringType(setMonth(setDate(new Date(), salary.payday), startMonth + 1)),
   });
-  const result = (passedTime / convertDayToSeconds(workingDays)) * 100;
+  const result =
+    (passedTime / convertDayToSeconds(workingDays)) * 100 < 0
+      ? 0
+      : (passedTime / convertDayToSeconds(workingDays)) * 100;
 
   return result >= 100 ? 100 : result;
 };
@@ -259,11 +262,12 @@ const calcCurrentSalary = () => {
     return { currentSalary: 0, percentage: 0 };
   }
   const total = salary.income + (salary?.additional || 0);
-  const percentage = convertPassedDayToPercentage() / (salary.income / total);
+  const percentage = convertPassedDayToPercentage() / 100;
   const defaultPercentage = (salary?.additional || 0) / total;
-  const currentSalary = salary.income * (percentage / 100) + (salary?.additional || 0);
+  const incomeRatio = (salary.income / total) * percentage;
+  const currentSalary = salary.income * percentage + (salary?.additional || 0);
 
-  return { currentSalary, percentage: defaultPercentage + percentage };
+  return { currentSalary, percentage: (defaultPercentage + incomeRatio) * 100 };
 };
 
 const calcCurrentWages = () => {

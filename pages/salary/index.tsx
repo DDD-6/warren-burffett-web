@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
+import router from 'next/router';
 
 import { useStage } from 'components/salary/stage';
 import Additional from 'components/salary/additional';
 import Income from 'components/salary/income';
-import { useSalaryInput, SalaryType } from 'hooks/income';
+import { useSalaryInput } from 'hooks/income';
 import { getLocalStorageItem, removeLocalStorageItem, setLocalStorageItem } from 'common/utils';
 
 const SalaryPageStyle = styled.div`
@@ -31,14 +32,17 @@ export default function Salary() {
     dispatch({ type: 'Next_Page' });
   };
 
-  const onSaveValue = (salary: SalaryType) => {
+  const onSaveValue = () => {
     dispatch({ type: 'DONE' });
 
     if (getLocalStorageItem('salary')) {
+      console.log(1);
       removeLocalStorageItem('salary');
     }
-
-    setLocalStorageItem('salary', salary);
+    console.log(2);
+    setLocalStorageItem('salary', state);
+    console.log(3);
+    router.push('/timer');
   };
 
   return (
@@ -60,11 +64,7 @@ export default function Salary() {
           onChangeWorkday={onChangeWorkday}
         />
       ) : (
-        <Additional
-          additional={state.additional}
-          onChangeAdditional={onChangeAdditional}
-          onSaveValue={() => onSaveValue(state)}
-        />
+        <Additional additional={state.additional} onChangeAdditional={onChangeAdditional} onSaveValue={onSaveValue} />
       )}
     </SalaryPageStyle>
   );

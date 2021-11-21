@@ -4,13 +4,13 @@ module.exports = {
   reactStrictMode: true,
   images: {
     formats: ['image/avif', 'image/webp'],
-    path:`${process.env.NEXT_PUBLIC_API_PROTOCOL}://${process.env.NEXT_PUBLIC_API_URL}`,
-    loader: 'imgix',
+    ...process.env.NODE_ENV === "production" && {
+      path:`${process.env.NEXT_PUBLIC_API_PROTOCOL}://${process.env.NEXT_PUBLIC_API_URL}`,
+      loader: 'imgix',
+    }
   },
   env: {
     figmaUrl: process.env.NEXT_PUBLIC_FIGMA_URL,
-    SERVER_URL: process.env.NEXT_PUBLIC_SERVER_URL,
-    SERVER_PROTOCOL: process.env.NEXT_PUBLIC_SERVER_PROTOCOL,
     API_PROTOCOL: process.env.NEXT_PUBLIC_API_PROTOCOL,
     API_URL: process.env.NEXT_PUBLIC_API_URL,
   },

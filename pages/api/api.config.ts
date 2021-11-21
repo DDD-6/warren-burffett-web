@@ -2,10 +2,10 @@ import axios from 'axios';
 
 import { configs } from '@config';
 
-const { API_URL } = configs;
+const { API_URL, API_PROTOCOL } = configs;
 
 const headerConfig = {
-  baseURL: API_URL,
+  baseURL: `${API_PROTOCOL}://${API_URL}`,
   headers: {
     'Content-Type': 'application/json',
   },

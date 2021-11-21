@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Form, Formik, FormikHelpers, Field, ErrorMessage } from 'formik';
 import { useMutation } from 'react-query';
 import * as Yup from 'yup';
+import router from 'next/router';
 
 import { Button, CircleButton } from './button/default';
 import BoldTitle from './BoldTitle';
@@ -19,6 +20,7 @@ import {
 } from '@styles/user';
 import { rowJustifyCenter, rowJustifySpaceAround } from '@styles/index';
 import { loginAPI, socialLoginAPI } from '@api/user';
+import { setLocalStorageItem } from 'common/utils';
 
 Yup.setLocale({
   string: {
@@ -48,14 +50,14 @@ const SignIn = () => {
     password: '',
   });
 
-  const login = useMutation(async (params: SignInValues) => await loginAPI(params), {
+  const login = useMutation('login', async (params: SignInValues) => loginAPI(params), {
     onError: err => {
       console.log(err);
       setIsAuthenticated(false);
     },
     onSuccess: data => {
-      console.log(data);
-      console.log('로그인 성공');
+      setLocalStorageItem('token', data.data);
+
       setIsAuthenticated(true);
     },
   });
@@ -71,9 +73,10 @@ const SignIn = () => {
   });
 
   useEffect(() => {
-    console.log(isAuthenticated);
-    console.log(finalInfo);
-  }, [isAuthenticated, finalInfo]);
+    if (isAuthenticated) {
+      router.push('/');
+    }
+  }, [isAuthenticated]);
 
   return (
     <div css={loginLayout}>

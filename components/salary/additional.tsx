@@ -45,8 +45,8 @@ export default function Additional({ onChangeAdditional, onSaveValue, additional
       </P2>
       <Section style={{ flexBasis: '20rem', alignItems: 'center' }}>
         <Button
-          disabled={!additional || !toggle}
-          onClick={onSaveValue}
+          // disabled={!additional || !toggle}
+          onClick={() => onSaveValue()}
           label="Done"
           className={classnames(
             'bg-40',

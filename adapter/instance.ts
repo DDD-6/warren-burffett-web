@@ -1,11 +1,12 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 
-import { serverProtocol, serverURL } from '../common/constants/index';
+import { configs } from '../config';
 
+const { API_PROTOCOL, API_URL } = configs;
 export default class AxiosAPI {
   constructor(advancedOptions?: AxiosRequestConfig) {
     this.session = axios.create({
-      baseURL: `${serverProtocol}://${serverURL}`,
+      baseURL: `${API_PROTOCOL}://${API_URL}/api`,
       withCredentials: true,
       ...advancedOptions,
     });
