@@ -1,10 +1,12 @@
 import Link from 'next/link';
 import styled from '@emotion/styled';
+import { useEffect } from 'react';
+import router from 'next/router';
 
 import { P4, P7, HorizonDivider } from 'components';
 import { useLayout } from 'hooks/layout';
 import { useUser } from 'hooks/user';
-import { removeLocalStorageItem } from 'common/utils';
+import { isLoggedIn, removeLocalStorageItem } from 'common/utils';
 
 const A = styled.a`
   padding: 14.5px 0;
@@ -16,7 +18,12 @@ const A = styled.a`
 export default function MyPage() {
   const { width } = useLayout();
   const { data } = useUser();
-  // console.log('data', data);
+
+  useEffect(() => {
+    if (!isLoggedIn()) {
+      router.push('/signin');
+    }
+  }, []);
 
   return (
     <div style={{ maxWidth: '120.4rem', margin: '0 auto', marginTop: '15.8vh' }}>

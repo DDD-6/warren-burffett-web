@@ -72,15 +72,14 @@ export default function Menu({ layoutWidth, isOpen, closeModal }: MenuProps) {
             Working-Timer
           </a>
         </Link>
-
-        {/* <Link href="/challenge">
+        <Link href="/challenge">
           <a
             className={classnames('heading1', path === 'challenge' ? 'secondary-green' : 'font-color-0')}
             onClick={onCloseModal}
           >
             Challenge
           </a>
-        </Link> */}
+        </Link>
         <Link href="/mypage">
           <a
             className={classnames('heading1', path === 'mypage' ? 'secondary-green' : 'font-color-0')}

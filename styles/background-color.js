@@ -19,7 +19,7 @@ export const backgroundColor = `
 },
 
 .bg-primary-blue{
-    background-color: #3281f7 !important
+    background-color: #3281f7 
 },
 .bg-primary-blue-20 {
     background-color: #63b1ff !important

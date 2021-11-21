@@ -1,12 +1,19 @@
-import { useRouter } from 'next/router';
+import router from 'next/router';
+import { useEffect } from 'react';
 
+import { isLoggedIn } from 'common/utils';
 import { P5, Button } from 'components';
 import { useResignUser, useUser } from 'hooks/user';
 
 export default function Resign() {
-  const router = useRouter();
   const { data } = useUser();
   const { mutate } = useResignUser();
+
+  useEffect(() => {
+    if (!isLoggedIn()) {
+      router.push('/signin');
+    }
+  }, []);
 
   return (
     <div style={{ maxWidth: 1024, margin: '0 auto', marginTop: '26vh', textAlign: 'center' }}>

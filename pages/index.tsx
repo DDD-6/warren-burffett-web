@@ -23,7 +23,7 @@ const Home: NextPage = () => {
           onClick={() => router.push('/salary')}
           label="Let's WESAVE"
           className="font-color-0 bg-primary-blue"
-          style={{ width: '25rem', height: '7rem' }}
+          style={{ width: '26.4rem', height: '7.4rem' }}
         />
       </Section>
     </HomePageStyle>

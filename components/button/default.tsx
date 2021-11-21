@@ -58,6 +58,7 @@ export const Button = ({
   borderRadius,
   label,
   type,
+  disabled,
   ...props
 }: ButtonProps & HTMLProps<HTMLButtonElement>) => {
   return (
@@ -65,7 +66,7 @@ export const Button = ({
       {...props}
       type={type || 'button'}
       css={buttonDefault}
-      style={{ color, backgroundColor, marginBottom, borderRadius }}
+      style={{ color, backgroundColor, marginBottom, borderRadius, ...props.style }}
     >
       {label}
     </button>
@@ -113,9 +114,9 @@ export const buttonDefault = css`
   border: none;
   border-radius: 40.5px;
 
-  /* &:hover {
-    background-color: '#63b1ff';
-  } */
+  &:hover {
+    background-color: #63b1ff;
+  }
 `;
 
 export const circleButtonDefault = css`

@@ -5,7 +5,7 @@ module.exports = {
   images: {
     formats: ['image/avif', 'image/webp'],
     ...process.env.NODE_ENV === "production" && {
-      path:`${process.env.NEXT_PUBLIC_API_PROTOCOL}://${process.env.NEXT_PUBLIC_API_URL}`,
+      path:`${process.env.NEXT_PUBLIC_API_PROTOCOL}://${process.env.NEXT_PUBLIC_DOMAIN}`,
       loader: 'imgix',
     }
   },
