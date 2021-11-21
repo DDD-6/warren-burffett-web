@@ -2,7 +2,7 @@ import { ReactNode, useState } from 'react';
 import Image from 'next/image';
 import router from 'next/router';
 
-import { Header, IconButton, Menu } from 'components';
+import { Header, IconButton, MenuModal } from 'components';
 import { useLayout } from 'hooks/layout';
 
 interface MainLayoutProps {
@@ -40,7 +40,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
         </IconButton>
       </Header>
       <main style={{ height: width > 768 ? 'calc(100vh - 72px)' : 'calc(100vh - 56px)' }}>{children}</main>
-      <Menu closeModal={closeModal} isOpen={toggle} layoutWidth={width} />
+      <MenuModal closeModal={closeModal} isOpen={toggle} layoutWidth={width} />
     </>
   );
 }
