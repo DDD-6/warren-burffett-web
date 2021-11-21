@@ -8,7 +8,7 @@ export const loginLayout = css`
 
   @media (min-width: 768px) {
     align-items: center;
-    height: 100vh;
+    height: 100%;
     padding: 0;
   }
 `;

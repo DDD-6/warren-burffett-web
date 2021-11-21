@@ -11,7 +11,7 @@ export const divideLine = css`
 
   @media (min-width: 768px) {
     width: 0;
-    height: 100vh;
+    height: 100%;
     border-right: 1.5px solid #080808;
   }
 `;

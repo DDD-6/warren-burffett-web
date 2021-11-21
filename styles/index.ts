@@ -4,6 +4,7 @@ export const mainLayout = css`
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100%;
 
   @media (min-width: 768px) {
     flex-direction: row;

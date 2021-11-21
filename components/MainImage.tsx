@@ -26,8 +26,8 @@ export const mainImage = css`
 
   @media (min-width: 768px) {
     display: block;
-    width: 76.044rem;
-    height: 100vh;
+    width: 39.606vw;
+    height: 100%;
   }
 
   .image {
