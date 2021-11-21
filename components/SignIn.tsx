@@ -72,11 +72,11 @@ const SignIn = () => {
     },
   });
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      router.push('/');
-    }
-  }, [isAuthenticated]);
+  // useEffect(() => {
+  //   if (isAuthenticated) {
+  //     router.push('/');
+  //   }
+  // }, [isAuthenticated]);
 
   return (
     <div css={loginLayout}>
@@ -158,11 +158,11 @@ const SignIn = () => {
                 <SmallSpan text="|" marginRight="1.6rem" />
                 <SmallAnchor href="/signup" text="회원가입" />
               </div>
-              <div css={rowJustifySpaceAround}>
+              {/* <div css={rowJustifySpaceAround}>
                 <CircleButton type="button" sns="naver" onClick={() => socialLogin.mutate({ socialType: 'NAVER' })} />
                 <CircleButton type="button" sns="kakao" onClick={() => socialLogin.mutate({ socialType: 'KAKAO' })} />
                 <CircleButton type="button" sns="google" onClick={() => socialLogin.mutate({ socialType: 'GOOGLE' })} />
-              </div>
+              </div> */}
             </Form>
           )}
         </Formik>

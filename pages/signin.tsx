@@ -10,7 +10,7 @@ const SignInPage: NextPage = () => {
     <div css={mainLayout}>
       <SignIn />
       <DivideLine />
-      <MainImage imageUrl="" />
+      <MainImage imageUrl="signin" backgroundColor="#080808" />
     </div>
   );
 };

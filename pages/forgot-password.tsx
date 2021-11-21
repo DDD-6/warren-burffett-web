@@ -8,7 +8,7 @@ const ForgotPasswordPage = () => {
     <div css={mainLayout}>
       <CheckEmail />
       <DivideLine />
-      <MainImage imageUrl="" />
+      <MainImage imageUrl="reset-password" backgroundColor="#a8a1f8" />
     </div>
   );
 };

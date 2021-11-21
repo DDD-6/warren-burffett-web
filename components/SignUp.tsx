@@ -172,11 +172,11 @@ const SignUp = () => {
               <div css={rowJustifyCenter} style={{ marginBottom: '4.8rem' }}>
                 <SmallAnchor href="/signin" text="로그인" />
               </div>
-              <div css={rowJustifySpaceAround}>
+              {/* <div css={rowJustifySpaceAround}>
                 <CircleButton type="button" sns="naver" />
                 <CircleButton type="button" sns="kakao" />
                 <CircleButton type="button" sns="google" />
-              </div>
+              </div> */}
             </Form>
           )}
         </Formik>
