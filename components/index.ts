@@ -11,5 +11,5 @@ export * from './UnderlineInput';
 export * from './Section';
 export * from './divider';
 
-export { default as MenuModal } from './menu';
+export { default as MenuModal } from './menu-modal';
 export { default as RangeBar } from './range-bar';

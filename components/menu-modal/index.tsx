@@ -37,7 +37,6 @@ Modal.setAppElement('body');
 export default function Menu({ layoutWidth, isOpen, closeModal }: MenuProps) {
   const { pathname } = useRouter();
   const path = pathname.split('/')[1] || '/';
-  console.log(path);
   const onCloseModal = () => {
     closeModal();
   };
@@ -74,14 +73,14 @@ export default function Menu({ layoutWidth, isOpen, closeModal }: MenuProps) {
           </a>
         </Link>
 
-        <Link href="/challenge">
+        {/* <Link href="/challenge">
           <a
             className={classnames('heading1', path === 'challenge' ? 'secondary-green' : 'font-color-0')}
             onClick={onCloseModal}
           >
             Challenge
           </a>
-        </Link>
+        </Link> */}
         <Link href="/mypage">
           <a
             className={classnames('heading1', path === 'mypage' ? 'secondary-green' : 'font-color-0')}
