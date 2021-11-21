@@ -33,6 +33,7 @@ interface ButtonProps {
 /**
  * Primary UI component for user interaction
  */
+/*
 export const buttonDefault = css`
   width: 19.9rem;
   height: 6.2rem;
@@ -48,10 +49,24 @@ export const buttonDefault = css`
     width: 38.238rem;
   }
 `;
+*/
 
-export const Button = ({ label, type, style, ...props }: ButtonProps & HTMLProps<HTMLButtonElement>) => {
+export const Button = ({
+  color = '#fff',
+  marginBottom = '0',
+  backgroundColor,
+  borderRadius,
+  label,
+  type,
+  ...props
+}: ButtonProps & HTMLProps<HTMLButtonElement>) => {
   return (
-    <button {...props} type={type || 'button'} css={buttonDefault} style={style}>
+    <button
+      {...props}
+      type={type || 'button'}
+      css={buttonDefault}
+      style={{ color, backgroundColor, marginBottom, borderRadius }}
+    >
       {label}
     </button>
   );
@@ -89,15 +104,19 @@ export const CircleButton = ({
   );
 };
 
-// export const buttonDefault = css`
-//   width: 100%;
-//   height: 7.4rem;
-//   padding: 0;
-//   font-size: 2rem;
-//   line-height: 1.2;
-//   border: none;
-//   border-radius: 40.5px;
-// `;
+export const buttonDefault = css`
+  width: 100%;
+  height: 7.4rem;
+  padding: 0;
+  font-size: 2rem;
+  line-height: 1.2;
+  border: none;
+  border-radius: 40.5px;
+
+  /* &:hover {
+    background-color: '#63b1ff';
+  } */
+`;
 
 export const circleButtonDefault = css`
   width: 6.4rem;

@@ -14,7 +14,7 @@ const MainImage = ({ imageUrl, backgroundColor }: MainImageProps) => {
 
   return (
     <div css={mainImage} style={{ backgroundColor }}>
-      <Image src={backgroundImage} className="image" layout="fill" />
+      {imageUrl && backgroundImage && <Image src={backgroundImage} className="image" layout="fill" />}
     </div>
   );
 };
