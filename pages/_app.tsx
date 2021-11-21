@@ -11,7 +11,7 @@ import { brandColor } from '../styles/brand-color';
 import { fontSize } from '../styles/font-size';
 
 import { configs } from 'config';
-import MainLayout from 'layout/mainlayout';
+import MainLayout from 'layout/main-layout';
 
 const { API_PROTOCOL, API_URL } = configs;
 
