@@ -46,7 +46,7 @@ const resignUserService = async (userId: number) => {
     throw new Error('토큰이 존재하지 않습니다.');
   }
 
-  return await userService.resignUser(userId, { token });
+  return await userService.resignUser(userId);
 };
 
 export const useResignUser = () =>
