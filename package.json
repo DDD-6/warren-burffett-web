@@ -13,12 +13,10 @@
     "cypress:run": "cypress run"
   },
   "dependencies": {
-    "@aws-amplify/ui-react": "^2.0.0",
     "@emotion/react": "11.4.1",
     "@emotion/styled": "^11.3.0",
     "@storybook/react": "^6.3.7",
     "apexcharts": "^3.29.0",
-    "aws-amplify": "^4.3.8",
     "axios": "^0.21.4",
     "classnames": "^2.3.1",
     "date-fns": "^2.25.0",
