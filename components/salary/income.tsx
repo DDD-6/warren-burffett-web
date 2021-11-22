@@ -69,11 +69,10 @@ export default function Income({
         <DayButton isSelected={isDayClicked(4)} onClickDays={onChangeWorkday} day="목" />
         <DayButton isSelected={isDayClicked(5)} onClickDays={onChangeWorkday} day="금" />
         <DayButton isSelected={isDayClicked(6)} onClickDays={onChangeWorkday} day="토" />
-        <DayButton isSelected={isDayClicked(0)} onClickDays={onChangeWorkday} day="일" />
-        )일 동안 일해서
+        <DayButton isSelected={isDayClicked(0)} onClickDays={onChangeWorkday} day="일" />) 일해서
       </P2>
       <div style={{ display: 'flex', flexDirection: 'row' }}>
-        <P2>
+        <P2 style={{ paddingRight: 57 }}>
           매달(
           <ClearInput
             onChange={e => onChangePayday(e.target.value)}

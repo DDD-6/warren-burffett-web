@@ -27,7 +27,7 @@ const customStyles = {
 const Nav = styled.nav`
   display: flex;
   flex-direction: column;
-  padding-top: min(187px, 18.5%);
+  padding-top: min(187px, 17.4148vh);
   align-items: center;
   height: 100%;
 `;

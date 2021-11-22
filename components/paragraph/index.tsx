@@ -5,12 +5,12 @@ const weightMedium = 500;
 
 export const P1 = styled.p`
   font-weight: ${weightMedium};
-  font-size: 13.6rem;
+  font-size: min(7.0833vw, 13.6rem);
 `;
 
 export const P2 = styled.p`
   font-weight: ${weightRegular};
-  font-size: 9.6rem;
+  font-size: min(5vw, 9.6rem);
   line-height: 1.6;
 `;
 

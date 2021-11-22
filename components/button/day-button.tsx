@@ -6,7 +6,7 @@ const dayBuuttonCss = css`
   background-color: #fff;
   border: 0px;
   padding: 0;
-  font-size: 9.6rem;
+  font-size: min(5vw, 9.6rem);
 `;
 
 type Day = '월' | '화' | '수' | '목' | '금' | '토' | '일';

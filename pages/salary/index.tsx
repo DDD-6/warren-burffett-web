@@ -10,9 +10,10 @@ import { getLocalStorageItem, removeLocalStorageItem, setLocalStorageItem } from
 const SalaryPageStyle = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 11.2rem;
+  padding-top: min(11.2rem, 6.3148vh);
   margin: 0 auto;
-  max-width: 110.6rem;
+  max-width: min(62.6vw, 121rem);
+  overflow-y: hidden;
 `;
 
 export default function Salary() {
@@ -36,12 +37,11 @@ export default function Salary() {
     dispatch({ type: 'DONE' });
 
     if (getLocalStorageItem('salary')) {
-      console.log(1);
       removeLocalStorageItem('salary');
     }
-    console.log(2);
+
     setLocalStorageItem('salary', state);
-    console.log(3);
+
     router.push('/timer');
   };
 

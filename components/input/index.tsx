@@ -3,14 +3,14 @@ import { InputHTMLAttributes, ClassAttributes } from 'react';
 
 const ClearInputCss = css`
   border: 0;
-  font-size: 9.6rem;
+  font-size: min(5vw, 9.6rem);
   text-align: center;
 
   ::placeholder,
   ::-ms-input-placeholder {
     color: #f3f3f3;
     text-align: center;
-    font-size: 9.6rem;
+    font-size: min(5vw, 9.6rem);
   }
 `;
 
