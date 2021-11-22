@@ -25,6 +25,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="favicon.ico" />
       </Head>
       <CookiesProvider>
         <QueryClientProvider client={queryCLient}>

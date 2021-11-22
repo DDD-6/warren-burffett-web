@@ -6,7 +6,7 @@ export const backgroundColor = `
     background-color: #f3f3f3 !important
 },
 .bg-40 {
-    background-color: #e4e4e4 !important
+    background-color: #e4e4e4
 },
 .bg-60 {
     background-color: #777777 !important
