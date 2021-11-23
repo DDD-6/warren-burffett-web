@@ -37,15 +37,15 @@ export default function Additional({ onChangeAdditional, onSaveValue, additional
           onBlur={e => {
             e.currentTarget.value = additional ? stringToMoney(additional?.toString()) : '0';
           }}
-          size={5}
-          minLength={9}
-          placeholder="0,000,000"
+          size={6}
+          minLength={10}
+          placeholder="00,000,000"
         />
         )원 더 벌어요
       </P2>
       <Section style={{ flexBasis: '20rem', alignItems: 'center', paddingTop: 'max(15.5rem, 14.3519vh)' }}>
         <Button
-          // disabled={!additional || !toggle}
+          disabled={!(additional || toggle)}
           onClick={() => onSaveValue()}
           label="Done"
           className={classnames(
@@ -53,6 +53,7 @@ export default function Additional({ onChangeAdditional, onSaveValue, additional
             'font-color-0',
             { 'bg-primary-blue': additional },
             { 'bg-primary-blue': toggle },
+            { 'bg-40-important': !(additional || toggle) },
           )}
           style={{ width: '25rem', height: '7rem', color: '#000' }}
         />

@@ -96,9 +96,9 @@ export default function Income({
               e.currentTarget.value = stringToMoney(state.income.toString());
             }}
             onChange={e => onChangeIncome(e.target.value)}
-            size={5}
+            size={6}
             maxLength={10}
-            placeholder="0,000,000"
+            placeholder="00,000,000"
           />
           )원 벌어요
         </P2>
@@ -108,7 +108,12 @@ export default function Income({
           disabled={onValidateInput()}
           onClick={onChangePage}
           label="Next"
-          className={classnames('bg-40', 'font-color-0', { 'bg-primary-blue': !onValidateInput() })}
+          className={classnames(
+            'bg-40',
+            'font-color-0',
+            { 'bg-40-important': onValidateInput() },
+            { 'bg-primary-blue': !onValidateInput() },
+          )}
           style={{ width: '25rem', height: '7rem', color: '#000' }}
         />
       </Section>

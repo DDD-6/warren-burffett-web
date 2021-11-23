@@ -58,7 +58,6 @@ export const Button = ({
   borderRadius,
   label,
   type,
-  disabled,
   ...props
 }: ButtonProps & HTMLProps<HTMLButtonElement>) => {
   return (

@@ -8,9 +8,9 @@ interface MainImageProps {
 
 const MainImage = ({ imageUrl, backgroundColor }: MainImageProps) => {
   let backgroundImage = '';
-  if (imageUrl === 'signup') backgroundImage = '/bg-signup.png';
-  else if (imageUrl === 'signin') backgroundImage = '/bg-login.png';
-  else if (imageUrl === 'reset-password') backgroundImage = '/bg-password-reset.png';
+  if (imageUrl === 'signup') backgroundImage = '/bg-signup.svg';
+  else if (imageUrl === 'signin') backgroundImage = '/bg-login.svg';
+  else if (imageUrl === 'reset-password') backgroundImage = '/bg-password-reset.svg';
 
   return (
     <div css={mainImage} style={{ backgroundColor }}>
@@ -25,6 +25,7 @@ export const mainImage = css`
   position: relative;
 
   @media (min-width: 768px) {
+    /* flex: 1 1; */
     display: block;
     width: max(39.606vw, 76.044rem);
     height: 100%;

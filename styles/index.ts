@@ -5,6 +5,7 @@ export const mainLayout = css`
   flex-direction: column;
   width: 100%;
   height: 100%;
+  /* flex-basis: 60%; */
 
   @media (min-width: 768px) {
     flex-direction: row;

@@ -7,7 +7,7 @@ export const Header = styled.header`
   margin: 0 auto;
   width: auto;
   height: 7.2rem;
-  border-bottom: 1px solid #cfd4d8;
+  border-bottom: 1.5px solid #080808;
   @media (max-width: 768px) {
     height: 5.6rem;
   }

@@ -16,7 +16,7 @@ const Home: NextPage = () => {
   return (
     <HomePageStyle>
       <Section style={{ flex: '72 auto' }}>
-        <Image src="/main.webp" width="840" height="420" alt="welcome wesaver" loading="eager" objectFit="contain" />;
+        <Image src="/main.svg" width="840" height="420" alt="welcome wesaver" loading="eager" objectFit="contain" />
       </Section>
       <Section style={{ flex: '23 auto' }}>
         <Button
