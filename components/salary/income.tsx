@@ -103,7 +103,7 @@ export default function Income({
           )원 벌어요
         </P2>
       </div>
-      <Section style={{ flexBasis: '20rem', alignItems: 'center' }}>
+      <Section style={{ flexBasis: '20rem', alignItems: 'center', paddingTop: 'max(13.3rem, 12.3148vh)' }}>
         <Button
           disabled={onValidateInput()}
           onClick={onChangePage}

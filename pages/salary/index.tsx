@@ -10,7 +10,7 @@ import { getLocalStorageItem, removeLocalStorageItem, setLocalStorageItem } from
 const SalaryPageStyle = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: min(11.2rem, 6.3148vh);
+  padding-top: min(13.3rem, 12.3148vh);
   margin: 0 auto;
   max-width: min(62.6vw, 121rem);
   overflow-y: hidden;

@@ -43,7 +43,7 @@ export default function Additional({ onChangeAdditional, onSaveValue, additional
         />
         )원 더 벌어요
       </P2>
-      <Section style={{ flexBasis: '20rem', alignItems: 'center' }}>
+      <Section style={{ flexBasis: '20rem', alignItems: 'center', paddingTop: 'max(15.5rem, 14.3519vh)' }}>
         <Button
           // disabled={!additional || !toggle}
           onClick={() => onSaveValue()}

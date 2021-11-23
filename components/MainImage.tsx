@@ -14,7 +14,7 @@ const MainImage = ({ imageUrl, backgroundColor }: MainImageProps) => {
 
   return (
     <div css={mainImage} style={{ backgroundColor }}>
-      {imageUrl && backgroundImage && <Image src={backgroundImage} className="image" layout="fill" />}
+      {imageUrl && backgroundImage && <Image src={backgroundImage} className="image" loading="eager" layout="fill" />}
     </div>
   );
 };
@@ -26,7 +26,7 @@ export const mainImage = css`
 
   @media (min-width: 768px) {
     display: block;
-    width: 39.606vw;
+    width: max(39.606vw, 76.044rem);
     height: 100%;
   }
 

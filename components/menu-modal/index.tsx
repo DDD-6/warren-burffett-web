@@ -21,13 +21,14 @@ const customStyles = {
     height: '100%',
     backgroundColor: '#080808',
     overflow: 'hidden',
+    padding: 0,
   },
 };
 
 const Nav = styled.nav`
   display: flex;
   flex-direction: column;
-  padding-top: min(187px, 17.4148vh);
+  padding-top: min(18.7rem, 17.4148vh);
   align-items: center;
   height: 100%;
 `;
@@ -43,7 +44,7 @@ export default function Menu({ layoutWidth, isOpen, closeModal }: MenuProps) {
 
   return (
     <Modal isOpen={isOpen} onRequestClose={closeModal} shouldCloseOnEsc style={customStyles}>
-      <Header style={{ borderBottom: 0, maxWidth: '130rem', justifyContent: 'flex-end' }}>
+      <Header style={{ borderBottom: 0, justifyContent: 'flex-end' }}>
         <IconButton className="bg-100" onClick={() => closeModal()}>
           <Image
             src="/menuclose.svg"

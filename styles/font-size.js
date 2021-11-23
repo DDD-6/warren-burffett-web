@@ -4,7 +4,7 @@ const weightMedium = 500;
 export const fontSize = `
 .heading1 {
   font-weight: ${weightMedium};
-  font-size: 7.0833vw;
+  font-size: min(13.6rem, 7.0833vw);
 },
 
 .heading2 {
