@@ -55,8 +55,9 @@ export const convertDayToStringType = (date: Date) => {
 export const calcPassedDayToSeconds = (passedWorkingDays: number, startTime: number) => {
   const start = new Date();
   start.setHours(startTime, 0, 0, 0);
-  const interval = differenceInSeconds(start, new Date());
-  const result = passedWorkingDays * 24 * 3600 + interval;
+  const interval = differenceInSeconds(new Date(), start);
+  const passedTime = interval < 0 ? 0 : interval;
+  const result = passedWorkingDays * 24 * 3600 + passedTime;
 
   return result;
 };

@@ -58,7 +58,7 @@ export const useResignUser = () =>
 
 const getUserService = async (token: Token) => {
   const userService = new UserApi();
-  console.log(userService);
+
   return userService.userInfo({ token });
 };
 

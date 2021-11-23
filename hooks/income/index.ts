@@ -238,11 +238,13 @@ const convertPassedDayToPercentage = () => {
   if (!isSameDay(startDay, current)) {
     passedWorkingDay = calcBusinessDay(salary.workday, {
       start: convertDayToStringType(setMonth(setDate(new Date(), salary.payday), startMonth)),
-      end: convertDayToStringType(new Date()),
+      end: convertDayToStringType(current),
     });
   }
-
-  const passedTime = calcPassedDayToSeconds(passedWorkingDay, salary.startTime);
+  const passedDay = salary.workday.includes(current.getDay())
+    ? calcPassedDayToSeconds(passedWorkingDay - 1, salary.startTime)
+    : 0;
+  const passedTime = calcPaseedTimeToSeconds(salary.startTime) + passedDay;
   const workingDays = calcBusinessDay(salary.workday, {
     start: convertDayToStringType(setMonth(setDate(new Date(), salary.payday), startMonth)),
     end: convertDayToStringType(setMonth(setDate(new Date(), salary.payday), startMonth + 1)),
@@ -297,12 +299,12 @@ const calcCurrentWages = () => {
 
 export const useMonthWages = () => {
   return useQuery('month-wage', () => calcCurrentSalary(), {
-    refetchInterval: 60000,
+    refetchInterval: 1000,
   });
 };
 
 export const useDayWages = () => {
   return useQuery('day-wage', () => calcCurrentWages(), {
-    refetchInterval: 60000,
+    refetchInterval: 1000,
   });
 };

@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Form, Formik, FormikHelpers, Field, ErrorMessage } from 'formik';
 import { useMutation } from 'react-query';
 import * as Yup from 'yup';
 import router from 'next/router';
 
-import { Button, CircleButton } from './button/default';
+import { Button } from './button/default';
 import BoldTitle from './BoldTitle';
 import { SmallAnchor, SmallSpan } from './SmallText';
 
@@ -18,8 +18,8 @@ import {
   loginLayout,
   lastField,
 } from '@styles/user';
-import { rowJustifyCenter, rowJustifySpaceAround } from '@styles/index';
-import { loginAPI, socialLoginAPI } from '@api/user';
+import { rowJustifyCenter } from '@styles/index';
+import { loginAPI } from '@api/user';
 import { setLocalStorageItem } from 'common/utils';
 
 Yup.setLocale({
@@ -59,18 +59,19 @@ const SignIn = () => {
       setLocalStorageItem('token', data.data);
 
       setIsAuthenticated(true);
+      router.push('/');
     },
   });
 
-  const socialLogin = useMutation(async (params: SocialType) => await socialLoginAPI(params), {
-    onError: err => {
-      console.log(err);
-    },
-    onSuccess: data => {
-      console.log(data);
-      console.log('로그인 성공');
-    },
-  });
+  // const socialLogin = useMutation(async (params: SocialType) => await socialLoginAPI(params), {
+  //   onError: err => {
+  //     console.log(err);
+  //   },
+  //   onSuccess: data => {
+  //     console.log(data);
+  //     console.log('로그인 성공');
+  //   },
+  // });
 
   // useEffect(() => {
   //   if (isAuthenticated) {
