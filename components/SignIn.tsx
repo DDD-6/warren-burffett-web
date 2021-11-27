@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Form, Formik, FormikHelpers, Field, ErrorMessage } from 'formik';
-import { useMutation } from 'react-query';
+import { QueryClient, useMutation } from 'react-query';
 import * as Yup from 'yup';
 import router from 'next/router';
 
@@ -43,6 +43,8 @@ const SignInSchema = Yup.object().shape({
   password: Yup.string().required('비밀번호를 입력해주세요'),
 });
 
+const queryClient = new QueryClient();
+
 const SignIn = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
   const [finalInfo, setFinalInfo] = useState({
@@ -57,7 +59,7 @@ const SignIn = () => {
     },
     onSuccess: data => {
       setLocalStorageItem('token', data.data);
-
+      queryClient.invalidateQueries('login-status');
       setIsAuthenticated(true);
       router.push('/');
     },
