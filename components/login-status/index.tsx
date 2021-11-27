@@ -1,18 +1,20 @@
 import { useEffect, useState } from 'react';
 import router from 'next/router';
 import Image from 'next/image';
+import { useQuery } from 'react-query';
 
 import { getLocalStorageItem } from 'common/utils';
 import { IconButton } from 'components';
 
 export default function LoginStatus() {
   const [isLogin, setIsLogin] = useState(false);
+  const { data } = useQuery('login-status', () => getLocalStorageItem('token'));
 
   useEffect(() => {
-    if (getLocalStorageItem('token')) {
+    if (data) {
       setIsLogin(true);
     }
-  }, [getLocalStorageItem]);
+  }, [data]);
 
   return (
     <>
