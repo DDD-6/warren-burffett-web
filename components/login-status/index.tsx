@@ -5,16 +5,17 @@ import { useQuery } from 'react-query';
 
 import { getLocalStorageItem } from 'common/utils';
 import { IconButton } from 'components';
+import { Token } from 'common/type/user';
 
 export default function LoginStatus() {
   const [isLogin, setIsLogin] = useState(false);
-  const { data } = useQuery('login-status', () => getLocalStorageItem('token'));
+  const { data } = useQuery('login-status', () => getLocalStorageItem<Token>('token'));
 
   useEffect(() => {
-    if (data) {
+    if (data?.accessToken) {
       setIsLogin(true);
     }
-  }, [data]);
+  }, [data?.accessToken]);
 
   return (
     <>
