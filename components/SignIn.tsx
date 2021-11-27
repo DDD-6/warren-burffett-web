@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Form, Formik, FormikHelpers, Field, ErrorMessage } from 'formik';
-import { QueryClient, useMutation } from 'react-query';
+import { QueryClient, useMutation, useQuery } from 'react-query';
 import * as Yup from 'yup';
 import router from 'next/router';
 
@@ -20,7 +20,8 @@ import {
 } from '@styles/user';
 import { rowJustifyCenter } from '@styles/index';
 import { loginAPI } from '@api/user';
-import { setLocalStorageItem } from 'common/utils';
+import { getLocalStorageItem, setLocalStorageItem } from 'common/utils';
+import { Token } from 'common/type/user';
 
 Yup.setLocale({
   string: {
@@ -64,6 +65,13 @@ const SignIn = () => {
       router.push('/');
     },
   });
+  const { data } = useQuery('login-status', () => getLocalStorageItem<Token>('token'));
+
+  useEffect(() => {
+    if (data?.accessToken) {
+      router.push('/');
+    }
+  }, [data]);
 
   // const socialLogin = useMutation(async (params: SocialType) => await socialLoginAPI(params), {
   //   onError: err => {
