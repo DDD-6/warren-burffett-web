@@ -12,7 +12,7 @@ export default function LoginStatus() {
     if (getLocalStorageItem('token')) {
       setIsLogin(true);
     }
-  }, []);
+  }, [getLocalStorageItem]);
 
   return (
     <>
